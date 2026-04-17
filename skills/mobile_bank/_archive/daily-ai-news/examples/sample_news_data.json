@@ -1,0 +1,98 @@
+[
+  {
+    "title": "OpenAI发布新一代多模态语言模型，在视觉推理任务上取得突破",
+    "summary": "OpenAI今日发布了其最新的大型语言模型GPT-4.5，该模型在视觉推理和代码生成任务上表现显著提升，支持更复杂的多模态输入。",
+    "source": "OpenAI Blog",
+    "source_url": "openai.com",
+    "url": "https://openai.com/blog/gpt-4-5",
+    "pub_date": "2024-01-15"
+  },
+  {
+    "title": "Google推出新型AI芯片TPU v5，性能提升3倍",
+    "summary": "Google发布了第五代张量处理单元（TPU v5），专为大规模AI训练优化，相比前代性能提升300%，能效比提高40%。",
+    "source": "Google AI Blog",
+    "source_url": "ai.googleblog.com",
+    "url": "https://ai.googleblog.com/2024/01/tpu-v5-announcement.html",
+    "pub_date": "2024-01-14"
+  },
+  {
+    "title": "DeepMind在蛋白质结构预测领域取得新进展",
+    "summary": "DeepMind的研究团队在Nature上发表论文，展示了其AI系统在蛋白质-配体结合预测方面的突破性进展，准确率达到92%。",
+    "source": "DeepMind Blog",
+    "source_url": "deepmind.com",
+    "url": "https://www.deepmind.com/blog/new-breakthrough-in-protein-structure-prediction",
+    "pub_date": "2024-01-13"
+  },
+  {
+    "title": "微软将AI助手Copilot集成到所有Office应用",
+    "summary": "微软宣布将AI助手Copilot全面集成到Word、Excel、PowerPoint等Office应用中，提供智能写作、数据分析和演示制作支持。",
+    "source": "Microsoft AI Blog",
+    "source_url": "microsoft.com",
+    "url": "https://www.microsoft.com/en-us/ai/blog/copilot-office-integration",
+    "pub_date": "2024-01-12"
+  },
+  {
+    "title": "英伟达发布新一代AI显卡H200，专为大语言模型训练优化",
+    "summary": "英伟达发布了H200 GPU，配备141GB HBM3e内存，专为训练和推理大型语言模型设计，相比H100性能提升1.5倍。",
+    "source": "NVIDIA Blog",
+    "source_url": "nvidia.com",
+    "url": "https://blogs.nvidia.com/blog/h200-ai-gpu-launch/",
+    "pub_date": "2024-01-11"
+  },
+  {
+    "title": "欧盟通过全球首个全面AI监管法案",
+    "summary": "欧洲议会通过了《人工智能法案》，这是全球首个全面监管人工智能的法律框架，对高风险AI系统实施严格限制。",
+    "source": "MIT Technology Review",
+    "source_url": "technologyreview.com",
+    "url": "https://www.technologyreview.com/2024/01/10/eu-ai-act-passes/",
+    "pub_date": "2024-01-10"
+  },
+  {
+    "title": "AI医疗诊断初创公司获2.5亿美元融资",
+    "summary": "专注于医学影像AI分析的初创公司MedAI宣布完成2.5亿美元C轮融资，由红杉资本领投，估值达到18亿美元。",
+    "source": "TechCrunch",
+    "source_url": "techcrunch.com",
+    "url": "https://techcrunch.com/2024/01/09/medai-series-c-funding/",
+    "pub_date": "2024-01-09"
+  },
+  {
+    "title": "斯坦福大学研究人员开发出新型AI推理算法",
+    "summary": "斯坦福大学的研究团队在NeurIPS会议上发表论文，提出了一种新的AI推理算法，在逻辑推理任务上达到人类专家水平。",
+    "source": "Wired",
+    "source_url": "wired.com",
+    "url": "https://www.wired.com/story/stanford-ai-reasoning-algorithm/",
+    "pub_date": "2024-01-08"
+  },
+  {
+    "title": "亚马逊将生成式AI集成到AWS服务中",
+    "summary": "亚马逊宣布在AWS平台上推出新的生成式AI服务，包括文本生成、代码编写和图像创建功能，面向企业客户开放。",
+    "source": "VentureBeat",
+    "source_url": "venturebeat.com",
+    "url": "https://venturebeat.com/ai/amazon-aws-generative-ai-launch/",
+    "pub_date": "2024-01-07"
+  },
+  {
+    "title": "AI在天气预报领域取得重大突破",
+    "summary": "Google和欧洲中期天气预报中心合作开发的AI天气预报模型，在准确性和计算效率方面都超越了传统数值预报方法。",
+    "source": "The Verge",
+    "source_url": "theverge.com",
+    "url": "https://www.theverge.com/2024/01/06/ai-weather-forecasting-breakthrough",
+    "pub_date": "2024-01-06"
+  },
+  {
+    "title": "前Google AI负责人加入OpenAI担任首席科学家",
+    "summary": "知名AI研究员、前Google Brain负责人宣布加入OpenAI，担任首席科学家，将领导新的研究团队。",
+    "source": "Analytics India Magazine",
+    "source_url": "analyticsindiamag.com",
+    "url": "https://analyticsindiamag.com/google-ai-leader-joins-openai/",
+    "pub_date": "2024-01-05"
+  },
+  {
+    "title": "中国发布首个大语言模型安全评估标准",
+    "summary": "中国国家互联网信息办公室发布了《大语言模型安全评估指南》，为AI模型的安全性和可靠性提供评估框架。",
+    "source": "机器之心",
+    "source_url": "jiqizhixin.com",
+    "url": "https://www.jiqizhixin.com/articles/2024-01-04-llm-safety-standard",
+    "pub_date": "2024-01-04"
+  }
+]

@@ -1,0 +1,8 @@
+name: mobile_bank_guard
+version: 1.0.0
+description: Mobile Bank 工具调用守护插件 - 确保工具调用顺序正确
+author: hermes-user
+provides_hooks:
+  - pre_tool_call
+  - post_tool_call
+provides_tools: []

@@ -1,0 +1,189 @@
+{
+  "news_sources": {
+    "primary": [
+      {
+        "name": "MIT Technology Review",
+        "url": "https://www.technologyreview.com/topic/artificial-intelligence/",
+        "type": "tech_news",
+        "language": "en",
+        "trust_level": "high"
+      },
+      {
+        "name": "Wired AI",
+        "url": "https://www.wired.com/category/artificial-intelligence/",
+        "type": "tech_news",
+        "language": "en",
+        "trust_level": "high"
+      },
+      {
+        "name": "TechCrunch AI",
+        "url": "https://techcrunch.com/category/artificial-intelligence/",
+        "type": "tech_news",
+        "language": "en",
+        "trust_level": "high"
+      },
+      {
+        "name": "VentureBeat AI",
+        "url": "https://venturebeat.com/category/ai/",
+        "type": "tech_news",
+        "language": "en",
+        "trust_level": "high"
+      },
+      {
+        "name": "The Verge AI",
+        "url": "https://www.theverge.com/ai-artificial-intelligence",
+        "type": "tech_news",
+        "language": "en",
+        "trust_level": "high"
+      },
+      {
+        "name": "Analytics India Magazine",
+        "url": "https://analyticsindiamag.com/category/news/",
+        "type": "tech_news",
+        "language": "en",
+        "trust_level": "medium"
+      },
+      {
+        "name": "Synced Review",
+        "url": "https://syncedreview.com/",
+        "type": "tech_news",
+        "language": "en",
+        "trust_level": "medium"
+      }
+    ],
+    "research_blogs": [
+      {
+        "name": "Google AI Blog",
+        "url": "https://ai.googleblog.com/",
+        "type": "research",
+        "language": "en",
+        "trust_level": "high"
+      },
+      {
+        "name": "OpenAI Blog",
+        "url": "https://openai.com/blog",
+        "type": "research",
+        "language": "en",
+        "trust_level": "high"
+      },
+      {
+        "name": "DeepMind Blog",
+        "url": "https://www.deepmind.com/blog",
+        "type": "research",
+        "language": "en",
+        "trust_level": "high"
+      },
+      {
+        "name": "Microsoft AI Blog",
+        "url": "https://www.microsoft.com/en-us/ai/blog",
+        "type": "research",
+        "language": "en",
+        "trust_level": "high"
+      },
+      {
+        "name": "NVIDIA Blog",
+        "url": "https://blogs.nvidia.com/blog/category/artificial-intelligence/",
+        "type": "research",
+        "language": "en",
+        "trust_level": "high"
+      },
+      {
+        "name": "Meta AI Blog",
+        "url": "https://ai.meta.com/blog/",
+        "type": "research",
+        "language": "en",
+        "trust_level": "high"
+      }
+    ],
+    "chinese_sources": [
+      {
+        "name": "机器之心",
+        "url": "https://www.jiqizhixin.com/",
+        "type": "tech_news",
+        "language": "zh",
+        "trust_level": "high"
+      },
+      {
+        "name": "AI科技评论",
+        "url": "https://www.leiphone.com/category/ai",
+        "type": "tech_news",
+        "language": "zh",
+        "trust_level": "medium"
+      },
+      {
+        "name": "量子位",
+        "url": "https://www.qbitai.com/",
+        "type": "tech_news",
+        "language": "zh",
+        "trust_level": "medium"
+      }
+    ]
+  },
+  "search_queries": {
+    "daily": [
+      "AI news today",
+      "latest artificial intelligence news",
+      "machine learning news today",
+      "AI breakthroughs today",
+      "最新人工智能新闻",
+      "今日AI新闻"
+    ],
+    "weekly": [
+      "AI news this week",
+      "artificial intelligence developments this week",
+      "machine learning research this week",
+      "本周人工智能新闻"
+    ],
+    "research": [
+      "AI research papers",
+      "machine learning research",
+      "arXiv AI papers",
+      "AI conference papers",
+      "人工智能研究论文"
+    ],
+    "products": [
+      "AI product launches",
+      "new AI tools released",
+      "AI platform updates",
+      "AI产品发布"
+    ]
+  },
+  "filtering": {
+    "min_relevance_score": 3,
+    "max_age_days": 7,
+    "required_keywords": [
+      "artificial intelligence",
+      "AI",
+      "machine learning",
+      "ML",
+      "deep learning",
+      "neural network",
+      "人工智能",
+      "机器学习"
+    ],
+    "excluded_keywords": [
+      "clickbait",
+      "sponsored",
+      "advertisement",
+      "promotional",
+      "click here",
+      "sign up now"
+    ]
+  },
+  "output": {
+    "format": "markdown",
+    "include_categories": [
+      "技术突破",
+      "产品发布",
+      "研究进展",
+      "行业应用",
+      "政策法规",
+      "投资融资",
+      "人物动态"
+    ],
+    "max_items_per_category": 10,
+    "include_statistics": true,
+    "include_trends": true,
+    "include_disclaimer": true
+  }
+}

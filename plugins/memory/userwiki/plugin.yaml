@@ -1,0 +1,4 @@
+name: userwiki
+description: 本地用户画像 Wiki Provider - 从历史会话构建结构化用户画像，按交互类型组织，提供回复策略建议
+version: 1.0.0
+author: hermes-agent
