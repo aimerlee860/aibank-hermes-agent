@@ -80,44 +80,54 @@ def _merge_session_data(session_id: str, messages: List[Dict], service_db: Servi
     """
     合并 hermes_state 消息和 ServiceDB 日志/工具调用。
 
-    按时间戳将日志和工具调用关联到对应的 assistant 消息。
+    将连续的 assistant 消息合并为一条（只保留最后一条），
+    以匹配实时流式中只显示最终响应的行为。
     """
     # 从 ServiceDB 获取日志和工具调用
     logs = service_db.get_logs(session_id)
     tool_calls = service_db.get_tool_calls(session_id)
 
-    # 按时间戳索引消息
-    # 找到每条 assistant 消息对应的日志和工具调用
     result = []
-    assistant_msgs = []
 
-    # 先收集所有 user 和 assistant 消息
     for msg in messages:
         role = msg.get("role", "")
         content = msg.get("content", "")
-        if role in ("user", "assistant") and content:
+        if role not in ("user", "assistant") or not content:
+            continue
+
+        if role == "assistant":
+            # 连续的 assistant 消息只保留最后一条（最终响应）
+            if result and result[-1].get("role") == "assistant":
+                result[-1]["content"] = content
+                result[-1]["timestamp"] = msg.get("timestamp")
+            else:
+                result.append({
+                    "role": "assistant",
+                    "content": content,
+                    "timestamp": msg.get("timestamp"),
+                })
+        else:
             result.append({
-                "role": role,
+                "role": "user",
                 "content": content,
                 "timestamp": msg.get("timestamp"),
             })
-            if role == "assistant":
-                assistant_msgs.append(result[-1])
 
-    # 为每条 assistant 消息添加日志和工具调用
-    # 简化策略：将所有日志和工具调用附加到最后一条 assistant 消息
-    # （因为一次对话通常只有一条 assistant 响应）
-    if assistant_msgs and (logs or tool_calls):
-        last_assistant = assistant_msgs[-1]
+    # 找到最后一条 assistant 消息，附加日志和工具调用
+    last_assistant = next((m for m in reversed(result) if m.get("role") == "assistant"), None)
+    if last_assistant and (logs or tool_calls):
 
-        # 转换日志格式
+        # 过滤掉 status 类型的日志（它们是实时中间状态，不应出现在历史中）
         debug_logs = []
         for log in logs:
+            if log.get("log_type") == "status":
+                continue
             debug_logs.append({
                 "message": log.get("content", ""),
                 "source": log.get("source", "agent"),
             })
-        last_assistant["debug_logs"] = debug_logs
+        if debug_logs:
+            last_assistant["debug_logs"] = debug_logs
 
         # 转换工具调用格式
         tc_list = []
@@ -128,7 +138,8 @@ def _merge_session_data(session_id: str, messages: List[Dict], service_db: Servi
                 "args": tc.get("args", {}),
                 "result": tc.get("result"),
             })
-        last_assistant["tool_calls"] = tc_list
+        if tc_list:
+            last_assistant["tool_calls"] = tc_list
 
     return result
 

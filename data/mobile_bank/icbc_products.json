@@ -1,0 +1,2582 @@
+[
+  {
+    "name": "工银理财·稳益固收类封闭理财产品（公益主题26G2024A）",
+    "code": null,
+    "yieldValue": null,
+    "yieldType": "业绩比较基准",
+    "yieldRaw": "业绩比较基准1.35%",
+    "minAmount": 1,
+    "period": "274天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·稳益固收类封闭理财产品",
+    "code": "26G2025A",
+    "yieldValue": null,
+    "yieldType": "业绩比较基准",
+    "yieldRaw": "业绩比较基准1.66%",
+    "minAmount": 1,
+    "period": "280天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫得利固收类封闭理财产品（安鑫款26G2034A）",
+    "code": null,
+    "yieldValue": 1.9,
+    "yieldType": "业绩比较基准",
+    "yieldRange": [
+      1.7,
+      1.9
+    ],
+    "yieldRaw": "业绩比较基准1.70%-1.90%",
+    "minAmount": 1,
+    "period": "162天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫得利固收类封闭理财产品",
+    "code": "26G2036A",
+    "yieldValue": 2.5,
+    "yieldType": "业绩比较基准",
+    "yieldRange": [
+      2.3,
+      2.5
+    ],
+    "yieldRaw": "业绩比较基准2.30%-2.50%",
+    "minAmount": 1,
+    "period": "553天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫得利固收类封闭理财产品",
+    "code": "26G2040A",
+    "yieldValue": 2.2,
+    "yieldType": "业绩比较基准",
+    "yieldRange": [
+      2,
+      2.2
+    ],
+    "yieldRaw": "业绩比较基准2.00%-2.20%",
+    "minAmount": 1,
+    "period": "355天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫得利固收类封闭理财产品（安鑫款26G2615A）",
+    "code": null,
+    "yieldValue": 1.9,
+    "yieldType": "业绩比较基准",
+    "yieldRange": [
+      1.7,
+      1.9
+    ],
+    "yieldRaw": "业绩比较基准1.70%-1.90%",
+    "minAmount": 1,
+    "period": "269天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫得利目标止盈策略ESG优选固收增强封闭",
+    "code": "26G2720A",
+    "yieldValue": 2.45,
+    "yieldType": "业绩比较基准",
+    "yieldRange": [
+      2.25,
+      2.45
+    ],
+    "yieldRaw": "业绩比较基准2.25%-2.45%",
+    "minAmount": 1,
+    "period": "462天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·核心优选目标止盈策略固收类封闭理财产品",
+    "code": "26G5720A",
+    "yieldValue": 2.4,
+    "yieldType": "业绩比较基准",
+    "yieldRange": [
+      2.2,
+      2.4
+    ],
+    "yieldRaw": "业绩比较基准2.20%-2.40%",
+    "minAmount": 1,
+    "period": "430天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫悦目标止盈策略固收增强封闭产品",
+    "code": "26G6094A",
+    "yieldValue": 2.35,
+    "yieldType": "业绩比较基准",
+    "yieldRange": [
+      2.15,
+      2.35
+    ],
+    "yieldRaw": "业绩比较基准2.15%-2.35%",
+    "minAmount": 1,
+    "period": "365天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫悦股债精选最短持有60天固收增强开放式理财产品",
+    "code": null,
+    "yieldValue": 1.9,
+    "yieldType": "业绩比较基准",
+    "yieldRange": [
+      1.7,
+      1.9
+    ],
+    "yieldRaw": "业绩比较基准1.70%-1.90%",
+    "minAmount": 1,
+    "period": "最短持有60天",
+    "riskLevel": "PR3"
+  },
+  {
+    "name": "工银理财·如意人生智悦最短持有720天固收增强个人(鎏金岁月)",
+    "code": null,
+    "yieldValue": 5,
+    "yieldType": "业绩比较基准",
+    "yieldRange": [
+      3,
+      5
+    ],
+    "yieldRaw": "业绩比较基准3.00%-5.00%",
+    "minAmount": 1,
+    "period": "最短持有720天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "高盛工银理财·盛景封闭固收美元产品256期",
+    "code": "26728A",
+    "yieldValue": 3.05,
+    "yieldType": "业绩比较基准",
+    "yieldRange": [
+      2.85,
+      3.05
+    ],
+    "yieldRaw": "业绩比较基准2.85%-3.05%",
+    "minAmount": 1,
+    "period": "188天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "高盛工银理财·盛景封闭固收美元产品258期",
+    "code": "26730A",
+    "yieldValue": 2.95,
+    "yieldType": "业绩比较基准",
+    "yieldRange": [
+      2.75,
+      2.95
+    ],
+    "yieldRaw": "业绩比较基准2.75%-2.95%",
+    "minAmount": 1,
+    "period": "363天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·添利宝现金管理类开放净值型理财产品4号",
+    "code": "23GS2068",
+    "yieldValue": 2.2292,
+    "yieldType": "七日年化收益率",
+    "yieldRaw": "每万份收益（元）0.3062 | 七日年化收益率2.2292%",
+    "minAmount": 1,
+    "period": "无固定期限",
+    "riskLevel": "PR1"
+  },
+  {
+    "name": "工银理财·添利宝现金管理类开放净值型理财产品24号",
+    "code": "24G0009J",
+    "yieldValue": 1.9809,
+    "yieldType": "七日年化收益率",
+    "yieldRaw": "每万份收益（元）0.2837 | 七日年化收益率1.9809%",
+    "minAmount": 1,
+    "period": "无固定期限",
+    "riskLevel": "PR1"
+  },
+  {
+    "name": "工银理财·添利宝鑫享净值型理财产品",
+    "code": "21GS2699",
+    "yieldValue": 1.4197,
+    "yieldType": "七日年化收益率",
+    "yieldRaw": "每万份收益（元）0.3838 | 七日年化收益率1.4197%",
+    "minAmount": 1,
+    "period": "无固定期限",
+    "riskLevel": "PR1"
+  },
+  {
+    "name": "工银理财·添利宝现金管理类开放净值型理财产品17号",
+    "code": "24G0002J",
+    "yieldValue": 1.1472,
+    "yieldType": "七日年化收益率",
+    "yieldRaw": "每万份收益（元）0.2814 | 七日年化收益率1.1472%",
+    "minAmount": 1,
+    "period": "无固定期限",
+    "riskLevel": "PR1"
+  },
+  {
+    "name": "工银理财·添利宝安享现金管理类开放理财产品",
+    "code": "20G2901B",
+    "yieldValue": 1.0892,
+    "yieldType": "七日年化收益率",
+    "yieldRaw": "每万份收益（元）0.3016 | 七日年化收益率1.0892%",
+    "minAmount": 1,
+    "period": "无固定期限",
+    "riskLevel": "PR1"
+  },
+  {
+    "name": "工银理财·添利宝现金管理类开放净值型理财产品22号",
+    "code": "24G0007J",
+    "yieldValue": 1.0877,
+    "yieldType": "七日年化收益率",
+    "yieldRaw": "每万份收益（元）0.3023 | 七日年化收益率1.0877%",
+    "minAmount": 1,
+    "period": "无固定期限",
+    "riskLevel": "PR1"
+  },
+  {
+    "name": "工银理财·添利宝现金管理类开放净值型理财产品2号",
+    "code": "23GS2066",
+    "yieldValue": 1.0645,
+    "yieldType": "七日年化收益率",
+    "yieldRaw": "每万份收益（元）0.2866 | 七日年化收益率1.0645%",
+    "minAmount": 1,
+    "period": "无固定期限",
+    "riskLevel": "PR1"
+  },
+  {
+    "name": "工银理财·添利宝现金管理类开放净值型理财产品11号",
+    "code": "24G2071A",
+    "yieldValue": 1.0625,
+    "yieldType": "七日年化收益率",
+    "yieldRaw": "每万份收益（元）0.2838 | 七日年化收益率1.0625%",
+    "minAmount": 1,
+    "period": "无固定期限",
+    "riskLevel": "PR1"
+  },
+  {
+    "name": "工银理财·添利宝现金管理类开放净值型理财产品18号",
+    "code": "24G0003J",
+    "yieldValue": 1.0608,
+    "yieldType": "七日年化收益率",
+    "yieldRaw": "每万份收益（元）0.2927 | 七日年化收益率1.0608%",
+    "minAmount": 1,
+    "period": "无固定期限",
+    "riskLevel": "PR1"
+  },
+  {
+    "name": "工银理财·添利宝现金管理类开放净值型理财产品3号",
+    "code": "23G2067J",
+    "yieldValue": 1.0603,
+    "yieldType": "七日年化收益率",
+    "yieldRaw": "每万份收益（元）0.2756 | 七日年化收益率1.0603%",
+    "minAmount": 1,
+    "period": "无固定期限",
+    "riskLevel": "PR1"
+  },
+  {
+    "name": "工银理财·添利宝现金管理类开放净值型理财产品3号",
+    "code": "23GS2067",
+    "yieldValue": 1.0603,
+    "yieldType": "七日年化收益率",
+    "yieldRaw": "每万份收益（元）0.2756 | 七日年化收益率1.0603%",
+    "minAmount": 1,
+    "period": "无固定期限",
+    "riskLevel": "PR1"
+  },
+  {
+    "name": "工银理财·添利宝现金管理类开放净值型理财产品14号",
+    "code": "24G2074G",
+    "yieldValue": 1.0478,
+    "yieldType": "七日年化收益率",
+    "yieldRaw": "每万份收益（元）0.2801 | 七日年化收益率1.0478%",
+    "minAmount": 1,
+    "period": "无固定期限",
+    "riskLevel": "PR1"
+  },
+  {
+    "name": "工银理财·添利宝现金管理类开放净值型理财产品14号",
+    "code": "24G2074A",
+    "yieldValue": 1.0478,
+    "yieldType": "七日年化收益率",
+    "yieldRaw": "每万份收益（元）0.2801 | 七日年化收益率1.0478%",
+    "minAmount": 1,
+    "period": "无固定期限",
+    "riskLevel": "PR1"
+  },
+  {
+    "name": "工银理财·添利宝现金管理类开放净值型理财产品1号",
+    "code": "23GS2065",
+    "yieldValue": 1.0472,
+    "yieldType": "七日年化收益率",
+    "yieldRaw": "每万份收益（元）0.2812 | 七日年化收益率1.0472%",
+    "minAmount": 1,
+    "period": "无固定期限",
+    "riskLevel": "PR1"
+  },
+  {
+    "name": "工银理财“添利宝”净值型理财产品",
+    "code": "XLT1801",
+    "yieldValue": 1.0303,
+    "yieldType": "七日年化收益率",
+    "yieldRaw": "每万份收益（元）0.2774 | 七日年化收益率1.0303%",
+    "minAmount": 1,
+    "period": "无固定期限",
+    "riskLevel": "PR1"
+  },
+  {
+    "name": "工银理财·天天鑫添益固收增强开放理财产品",
+    "code": "25G2501A",
+    "yieldValue": 6.13,
+    "yieldType": "近一月年化收益",
+    "yieldRaw": "近一月年化收益6.13%",
+    "minAmount": 1,
+    "period": "每天开放",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·核心优选最短持有14天固收增强开放理财产品",
+    "code": "26G5714A",
+    "yieldValue": 3.87,
+    "yieldType": "近一月年化收益",
+    "yieldRaw": "近一月年化收益3.87%",
+    "minAmount": 1,
+    "period": "最短持有14天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫稳利ESG优选固收类1年定期开放式理财产品3号",
+    "code": null,
+    "yieldValue": 3.46,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益3.46%",
+    "minAmount": 1,
+    "period": "每年开放一次",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫稳利ESG优选固收类1年定期开放式理财产品4号",
+    "code": null,
+    "yieldValue": 3.31,
+    "yieldType": "近三月年化收益",
+    "yieldRaw": "近三月年化收益3.31%",
+    "minAmount": 1,
+    "period": "每年开放一次",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·天天鑫添益纯债债券型个人理财产品",
+    "code": null,
+    "yieldValue": 3.3,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益3.30%",
+    "minAmount": 1,
+    "period": "每天开放",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫添益纯债对冲策略最短持有30天固收开放",
+    "code": "25G2668A",
+    "yieldValue": 3.21,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益3.21%",
+    "minAmount": 1,
+    "period": "最短持有30天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫稳利ESG优选固收类1年定期开放式理财产品2号",
+    "code": null,
+    "yieldValue": 3.1,
+    "yieldType": "近六月年化收益",
+    "yieldRaw": "近六月年化收益3.10%",
+    "minAmount": 1,
+    "period": "每年开放一次",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫稳利固定收益类季度双开定期开放式理财产品1号",
+    "code": null,
+    "yieldValue": 2.98,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.98%",
+    "minAmount": 1,
+    "period": "每90天开放一次",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫稳利固定收益类3个月定期开放式理财产品4号",
+    "code": null,
+    "yieldValue": 2.88,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.88%",
+    "minAmount": 1,
+    "period": "每季度开放一次",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "同盈象固收稳健半年定开46号",
+    "code": null,
+    "yieldValue": 2.82,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.82%",
+    "minAmount": 1,
+    "period": "每半年开放一次",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·天天鑫核心优选固定收益类开放式理财产品",
+    "code": "25G5949J",
+    "yieldValue": 2.75,
+    "yieldType": "近一月年化收益",
+    "yieldRaw": "近一月年化收益2.75%",
+    "minAmount": 1,
+    "period": "每天开放",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫稳利固收类1年定期开放式理财产品1号",
+    "code": "24G2064A",
+    "yieldValue": 2.7,
+    "yieldType": "近一月年化收益",
+    "yieldRaw": "近一月年化收益2.70%",
+    "minAmount": 1,
+    "period": "每年开放一次",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "中银理财-稳富（90天持有期）02",
+    "code": null,
+    "yieldValue": 2.7,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.70%",
+    "minAmount": 1,
+    "period": "最短持有90天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "招银理财招睿添金14天持有期1号固定收益类理财计划",
+    "code": null,
+    "yieldValue": 2.65,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.65%",
+    "minAmount": 0.01,
+    "period": "最短持有14天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·月月鑫稳利ESG优选固收类开放理财产品1号",
+    "code": null,
+    "yieldValue": 2.61,
+    "yieldType": "近六月年化收益",
+    "yieldRaw": "近六月年化收益2.61%",
+    "minAmount": 1,
+    "period": "每月开放一次",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "浦银理财月月鑫最短持有期73号A",
+    "code": null,
+    "yieldValue": 2.61,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.61%",
+    "minAmount": 1,
+    "period": "最短持有30天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "民生理财富竹纯债91天持有期11号理财产品",
+    "code": "BE61014A",
+    "yieldValue": 2.59,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.59%",
+    "minAmount": 1,
+    "period": "最短持有91天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫稳利固收类6个月定期开放式理财产品6号",
+    "code": null,
+    "yieldValue": 2.56,
+    "yieldType": "近一月年化收益",
+    "yieldRaw": "近一月年化收益2.56%",
+    "minAmount": 1,
+    "period": "每半年开放一次",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "中银理财-稳富(90天持有期)11",
+    "code": null,
+    "yieldValue": 2.56,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.56%",
+    "minAmount": 1,
+    "period": "最短持有90天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "中银理财稳富固收双月开3号",
+    "code": null,
+    "yieldValue": 2.54,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.54%",
+    "minAmount": 1,
+    "period": "每60天开放一次",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·核心优选30天持盈固定收益类开放式理财产品",
+    "code": "21GS5630",
+    "yieldValue": 2.51,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.51%",
+    "minAmount": 1,
+    "period": "最短持有30天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "中银理财-稳富（30天持有期）宁享版3号",
+    "code": null,
+    "yieldValue": 2.5,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.50%",
+    "minAmount": 1,
+    "period": "最短持有30天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·月月鑫稳利固收类开放式理财产品",
+    "code": "24G2088A",
+    "yieldValue": 2.5,
+    "yieldType": "近一月年化收益",
+    "yieldRaw": "近一月年化收益2.50%",
+    "minAmount": 1,
+    "period": "每月开放一次",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "民生理财富竹固收14天持有期5号理财产品",
+    "code": "BE32205A",
+    "yieldValue": 2.49,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.49%",
+    "minAmount": 1,
+    "period": "最短持有14天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "中银理财-稳富（双月开）007",
+    "code": null,
+    "yieldValue": 2.49,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.49%",
+    "minAmount": 1,
+    "period": "每60天开放一次",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "中银理财稳富固收双月开2号",
+    "code": null,
+    "yieldValue": 2.48,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.48%",
+    "minAmount": 0.01,
+    "period": "每60天开放一次",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫稳利固收类6个月定期开放理财产品3号",
+    "code": null,
+    "yieldValue": 2.47,
+    "yieldType": "近三月年化收益",
+    "yieldRaw": "近三月年化收益2.47%",
+    "minAmount": 1,
+    "period": "每半年开放一次",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·核心优选14天持盈固定收益类开放式理财产品",
+    "code": null,
+    "yieldValue": 2.47,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.47%",
+    "minAmount": 1,
+    "period": "最短持有14天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫悦优先股策略优选最短持有180天混合类开放理财产品",
+    "code": null,
+    "yieldValue": 2.45,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.45%",
+    "minAmount": 1,
+    "period": "最短持有180天",
+    "riskLevel": "PR3"
+  },
+  {
+    "name": "工银理财·鑫稳利固收类季开理财产品",
+    "code": "24G2412A",
+    "yieldValue": 2.43,
+    "yieldType": "近一月年化收益",
+    "yieldRaw": "近一月年化收益2.43%",
+    "minAmount": 1,
+    "period": "每季度开放一次",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·核心优选90天持盈固收理财产品老年专享（福满系列）",
+    "code": null,
+    "yieldValue": 2.41,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.41%",
+    "minAmount": 1,
+    "period": "最短持有90天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "中银理财-悦享天添（工行专享）03",
+    "code": null,
+    "yieldValue": 2.41,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.41%",
+    "minAmount": 1,
+    "period": "每天开放",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫悦优先股策略优选最短持有90天混合类开放理财产品",
+    "code": null,
+    "yieldValue": 2.38,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.38%",
+    "minAmount": 1,
+    "period": "最短持有90天",
+    "riskLevel": "PR3"
+  },
+  {
+    "name": "工银理财·鑫添益ESG优选最短持有180天固收类开放产品",
+    "code": "25G2588A",
+    "yieldValue": 2.38,
+    "yieldType": "近一月年化收益",
+    "yieldRaw": "近一月年化收益2.38%",
+    "minAmount": 1,
+    "period": "最短持有180天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "中银理财-稳富（7天持有期）02",
+    "code": null,
+    "yieldValue": 2.36,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.36%",
+    "minAmount": 1,
+    "period": "最短持有7天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫添益7天持盈固定收益类开放式理财产品",
+    "code": null,
+    "yieldValue": 2.34,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.34%",
+    "minAmount": 1,
+    "period": "最短持有7天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "中银理财-稳富（14天持有期）宁享版2号",
+    "code": null,
+    "yieldValue": 2.31,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.31%",
+    "minAmount": 1,
+    "period": "最短持有14天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "中银理财-悦享天添（工行专享）",
+    "code": null,
+    "yieldValue": 2.29,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.29%",
+    "minAmount": 1,
+    "period": "每天开放",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫稳利固收类6个月定期开放理财产品4号",
+    "code": null,
+    "yieldValue": 2.28,
+    "yieldType": "近六月年化收益",
+    "yieldRaw": "近六月年化收益2.28%",
+    "minAmount": 1,
+    "period": "每半年开放一次",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·天天鑫稳益固收类开放理财产品",
+    "code": "25G2096A",
+    "yieldValue": 2.27,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.27%",
+    "minAmount": 1,
+    "period": "每天开放",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "安盈象固收稳利一个月持有期2号",
+    "code": null,
+    "yieldValue": 2.25,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.25%",
+    "minAmount": 1,
+    "period": "最短持有30天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "民生理财富竹固收天天2号",
+    "code": "BE31002A",
+    "yieldValue": 2.24,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.24%",
+    "minAmount": 1,
+    "period": "每天开放",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫添益14天持盈固收增强开放式理财产品",
+    "code": null,
+    "yieldValue": 2.22,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.22%",
+    "minAmount": 1,
+    "period": "最短持有14天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫悦优先股策略优选最短持有60天混合类开放理财产品",
+    "code": null,
+    "yieldValue": 2.21,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.21%",
+    "minAmount": 1,
+    "period": "最短持有60天",
+    "riskLevel": "PR3"
+  },
+  {
+    "name": "民生理财富竹固收7天持有期2号理财产品",
+    "code": "BE32102A",
+    "yieldValue": 2.19,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.19%",
+    "minAmount": 1,
+    "period": "最短持有7天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "中银理财-稳富（60天持有期）02",
+    "code": null,
+    "yieldValue": 2.19,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.19%",
+    "minAmount": 1,
+    "period": "最短持有60天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·天天鑫添益固定收益类开放式理财产品",
+    "code": "21GS2637",
+    "yieldValue": 2.18,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.18%",
+    "minAmount": 1,
+    "period": "每天开放",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "高盛工银理财·盛景日日安盈纯债固收产品1期",
+    "code": "25153A",
+    "yieldValue": 2.18,
+    "yieldType": "近一月年化收益",
+    "yieldRaw": "近一月年化收益2.18%",
+    "minAmount": 1,
+    "period": "每天开放",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫悦最短持有7天固收增强开放产品",
+    "code": "25G6700A",
+    "yieldValue": 2.13,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.13%",
+    "minAmount": 1,
+    "period": "最短持有7天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·天天鑫添益固定收益类开放式理财产品",
+    "code": "22G2866B",
+    "yieldValue": 2.12,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.12%",
+    "minAmount": 1,
+    "period": "每天开放",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫稳利固收类1年定期开放式理财产品3号",
+    "code": null,
+    "yieldValue": 2.12,
+    "yieldType": "近三月年化收益",
+    "yieldRaw": "近三月年化收益2.12%",
+    "minAmount": 1,
+    "period": "每年开放一次",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "兴银稳添利月盈1号G",
+    "code": null,
+    "yieldValue": 2.1,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.10%",
+    "minAmount": 1,
+    "period": "最短持有30天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "兴银稳添利双周盈1号（工行）",
+    "code": null,
+    "yieldValue": 2.1,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.10%",
+    "minAmount": 1,
+    "period": "最短持有14天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·月月鑫稳利固收类开放式理财产品",
+    "code": "24G2099A",
+    "yieldValue": 2.09,
+    "yieldType": "近六月年化收益",
+    "yieldRaw": "近六月年化收益2.09%",
+    "minAmount": 1,
+    "period": "每月开放一次",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·稳丰最短持有7天固定收益类开放式理财产品",
+    "code": "23G3039A",
+    "yieldValue": 2.08,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.08%",
+    "minAmount": 1,
+    "period": "最短持有7天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "信银理财安盈象固收稳健七天持有期7号",
+    "code": null,
+    "yieldValue": 2.08,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.08%",
+    "minAmount": 1,
+    "period": "最短持有7天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·核心优选ESG优选最短持有60天固收增强开放产品",
+    "code": null,
+    "yieldValue": 2.07,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.07%",
+    "minAmount": 1,
+    "period": "最短持有60天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·天天鑫添益低波红利策略固收增强开放式产品",
+    "code": null,
+    "yieldValue": 2.04,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.04%",
+    "minAmount": 1,
+    "period": "每天开放",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财鑫添益最短持有60天",
+    "code": null,
+    "yieldValue": 2.04,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.04%",
+    "minAmount": 1,
+    "period": "最短持有60天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "民生理财贵竹固收增利月月盈30天持有期10号理财产品",
+    "code": "BE41310A",
+    "yieldValue": 2.04,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.04%",
+    "minAmount": 1,
+    "period": "最短持有30天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫悦优先股策略优选最短持有365天混合类开放理财产品",
+    "code": null,
+    "yieldValue": 2.02,
+    "yieldType": "近六月年化收益",
+    "yieldRaw": "近六月年化收益2.02%",
+    "minAmount": 1,
+    "period": "最短持有365天",
+    "riskLevel": "PR3"
+  },
+  {
+    "name": "信银理财安盈象固收稳健日开6号",
+    "code": null,
+    "yieldValue": 2.02,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.02%",
+    "minAmount": 1,
+    "period": "每天开放",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "招银理财招睿鑫鼎（短债）7天持有期1号固定收益类理财计划",
+    "code": null,
+    "yieldValue": 2.01,
+    "yieldType": "近一月年化收益",
+    "yieldRaw": "近一月年化收益2.01%",
+    "minAmount": 1,
+    "period": "最短持有7天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·月月稳丰同业存单存款开放式产品",
+    "code": null,
+    "yieldValue": 2.01,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.01%",
+    "minAmount": 1,
+    "period": "每月开放一次",
+    "riskLevel": "PR1"
+  },
+  {
+    "name": "工银理财·天天鑫核心优选固收增强开放理财产品",
+    "code": "25G5789A",
+    "yieldValue": 2,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.00%",
+    "minAmount": 1,
+    "period": "每天开放",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "中银理财-天天增益",
+    "code": null,
+    "yieldValue": 1.99,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益1.99%",
+    "minAmount": 1,
+    "period": "每天开放",
+    "riskLevel": "PR1"
+  },
+  {
+    "name": "工银理财·鑫悦优先股策略优选最短持有30天混合开放理财产品",
+    "code": null,
+    "yieldValue": 1.97,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益1.97%",
+    "minAmount": 1,
+    "period": "最短持有30天",
+    "riskLevel": "PR3"
+  },
+  {
+    "name": "工银理财·核心优选ESG优选最短持有7天固收类开放产品",
+    "code": "25G5777A",
+    "yieldValue": 1.93,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益1.93%",
+    "minAmount": 1,
+    "period": "最短持有7天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·核心优选固收类每周开放理财产品",
+    "code": "24G5087A",
+    "yieldValue": 1.91,
+    "yieldType": "近三月年化收益",
+    "yieldRaw": "近三月年化收益1.91%",
+    "minAmount": 1,
+    "period": "每周开放一次",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "平安理财启元稳利30天持有2号",
+    "code": null,
+    "yieldValue": 1.91,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益1.91%",
+    "minAmount": 1,
+    "period": "最短持有30天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·天天鑫悦固收增强开放式理财产品",
+    "code": null,
+    "yieldValue": 1.89,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益1.89%",
+    "minAmount": 1,
+    "period": "每天开放",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·天天鑫核心优选固收类开放式理财产品",
+    "code": "24G5098A",
+    "yieldValue": 1.81,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益1.81%",
+    "minAmount": 1,
+    "period": "每天开放",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·天天鑫享固收增强开放式理财产品",
+    "code": "25G5008J",
+    "yieldValue": 1.79,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益1.79%",
+    "minAmount": 1,
+    "period": "每天开放",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·核心优选最短持有60天固收类开放理财产品",
+    "code": "25G5076A",
+    "yieldValue": 1.73,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益1.73%",
+    "minAmount": 1,
+    "period": "最短持有60天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·天天鑫核心优选固收增强开放理财产品",
+    "code": "25G5781A",
+    "yieldValue": 1.68,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益1.68%",
+    "minAmount": 1,
+    "period": "每天开放",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·天天鑫添益低波红利策略固收增强开放产品",
+    "code": "23G2000E",
+    "yieldValue": 1.64,
+    "yieldType": "近三月年化收益",
+    "yieldRaw": "近三月年化收益1.64%",
+    "minAmount": 1,
+    "period": "每天开放",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·天天鑫添益双债精选策略固收增强开放式理财产品",
+    "code": null,
+    "yieldValue": 1.63,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益1.63%",
+    "minAmount": 1,
+    "period": "每天开放",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·天天鑫核心优选固收类开放式理财产品",
+    "code": "24G5098E",
+    "yieldValue": 1.62,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益1.62%",
+    "minAmount": 1,
+    "period": "每天开放",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·天天鑫核心优选同业存单及存款固收类开放式理财产品",
+    "code": null,
+    "yieldValue": 1.33,
+    "yieldType": "近六月年化收益",
+    "yieldRaw": "近六月年化收益1.33%",
+    "minAmount": 1,
+    "period": "每天开放",
+    "riskLevel": "PR1"
+  },
+  {
+    "name": "工银理财·天天鑫添益同业存单及存款固定收益类开放式理财产品",
+    "code": null,
+    "yieldValue": 1.23,
+    "yieldType": "近六月年化收益",
+    "yieldRaw": "近六月年化收益1.23%",
+    "minAmount": 1,
+    "period": "每天开放",
+    "riskLevel": "PR1"
+  },
+  {
+    "name": "高盛工银理财·盛景每日开放固定收益类美元理财产品1期",
+    "code": null,
+    "yieldValue": 4.44,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益4.44%",
+    "minAmount": 1,
+    "period": "每天开放",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫稳利个人3个月定期开放理财产品（第1期）",
+    "code": null,
+    "yieldValue": 3.38,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益3.38%",
+    "minAmount": null,
+    "period": "每季度开放一次",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·月月鑫稳利个人开放式理财产品（第1期）",
+    "code": null,
+    "yieldValue": 3.09,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益3.09%",
+    "minAmount": null,
+    "period": "每月开放一次",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫添益90天持盈固定收益类开放式理财产品",
+    "code": null,
+    "yieldValue": 2.86,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.86%",
+    "minAmount": null,
+    "period": "最短持有90天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·双周鑫添益固定收益类开放式理财产品",
+    "code": "19GS2112",
+    "yieldValue": 2.84,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.84%",
+    "minAmount": null,
+    "period": "每两周开放一次",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·天天鑫稳益固收类开放理财产品",
+    "code": "25G2484A",
+    "yieldValue": 2.77,
+    "yieldType": "近一月年化收益",
+    "yieldRaw": "近一月年化收益2.77%",
+    "minAmount": 1,
+    "period": "每天开放",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·核心优选最短持有90天固收类开放理财产品",
+    "code": "25G5079A",
+    "yieldValue": 2.71,
+    "yieldType": "近一月年化收益",
+    "yieldRaw": "近一月年化收益2.71%",
+    "minAmount": 1,
+    "period": "最短持有90天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·核心优选最短持有7天双债精选策略固收增强开放产品",
+    "code": null,
+    "yieldValue": 2.62,
+    "yieldType": "近三月年化收益",
+    "yieldRaw": "近三月年化收益2.62%",
+    "minAmount": 1,
+    "period": "最短持有7天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "招银理财招睿月添利（双月）1号固定收益类理财计划",
+    "code": null,
+    "yieldValue": 2.44,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.44%",
+    "minAmount": 1,
+    "period": "每60天开放一次",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "招银理财招睿丰和（信用精选）60天持有期1号固定收益类理财计划",
+    "code": null,
+    "yieldValue": 2.31,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.31%",
+    "minAmount": 1,
+    "period": "最短持有60天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·如意人生天天鑫稳益固收类开放个人理财产品",
+    "code": "26G5025G",
+    "yieldValue": 2.3,
+    "yieldType": "近一月年化收益",
+    "yieldRaw": "近一月年化收益2.30%",
+    "minAmount": 1,
+    "period": "无固定期限",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·核心优选最短持有60天固收类开放式理财产品",
+    "code": "25G5933J",
+    "yieldValue": 2.24,
+    "yieldType": "近一月年化收益",
+    "yieldRaw": "近一月年化收益2.24%",
+    "minAmount": 1,
+    "period": "最短持有60天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "兴银稳添利陆盈1号E（财富赢尊享）",
+    "code": null,
+    "yieldValue": 2.22,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.22%",
+    "minAmount": null,
+    "period": "最短持有180天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "招银理财招睿天添金稳健型2号固定收益类理财计划",
+    "code": null,
+    "yieldValue": 2.18,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.18%",
+    "minAmount": 1,
+    "period": "每天开放",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "招银理财招睿和鼎高评级30天持有期1号固定收益类理财计划",
+    "code": null,
+    "yieldValue": 2.1,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.10%",
+    "minAmount": 1,
+    "period": "最短持有30天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·天天鑫核心优选ESG优选固收类开放理财产品",
+    "code": "25G5771A",
+    "yieldValue": 2.1,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.10%",
+    "minAmount": 1,
+    "period": "每天开放",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "招银理财招睿鑫鼎（中短债）90天持有期1号固定收益类理财计划",
+    "code": null,
+    "yieldValue": 2.09,
+    "yieldType": "近一月年化收益",
+    "yieldRaw": "近一月年化收益2.09%",
+    "minAmount": 0.01,
+    "period": "最短持有90天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫添益最短持有90天固收类开放理财产品2号",
+    "code": "24G2990J",
+    "yieldValue": 2.07,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.07%",
+    "minAmount": 1,
+    "period": "最短持有90天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "兴银稳添利陆盈1号D",
+    "code": null,
+    "yieldValue": 2.07,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.07%",
+    "minAmount": null,
+    "period": "最短持有180天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·核心优选最短持有30天双债精选策略固收增强开放产品",
+    "code": null,
+    "yieldValue": 2.06,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.06%",
+    "minAmount": 1,
+    "period": "最短持有30天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·天天鑫稳益固收类开放理财产品",
+    "code": "25G5770A",
+    "yieldValue": 2.05,
+    "yieldType": "近一月年化收益",
+    "yieldRaw": "近一月年化收益2.05%",
+    "minAmount": 1,
+    "period": "每天开放",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫稳利纯债对冲策略固收类3个月定期开放理财产品1号",
+    "code": null,
+    "yieldValue": 2.04,
+    "yieldType": "近六月年化收益",
+    "yieldRaw": "近六月年化收益2.04%",
+    "minAmount": 1,
+    "period": "每季度开放一次",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "招银理财招睿丰和（短债）14天持有期2号固定收益类理财计划",
+    "code": null,
+    "yieldValue": 2.04,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.04%",
+    "minAmount": 1,
+    "period": "最短持有14天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫悦优先股策略优选最短持有365天混合产品",
+    "code": "24H6088J",
+    "yieldValue": 2.03,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.03%",
+    "minAmount": 1,
+    "period": "最短持有365天",
+    "riskLevel": "PR3"
+  },
+  {
+    "name": "兴银理财稳添利季盈增利2号（工行）",
+    "code": null,
+    "yieldValue": 2,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.00%",
+    "minAmount": 1,
+    "period": "最短持有90天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "招银理财招睿和鼎高评级日开1号固定收益类理财计划",
+    "code": null,
+    "yieldValue": 1.96,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益1.96%",
+    "minAmount": 1,
+    "period": "每天开放",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫添益最短持有180天固收类开放产品1号",
+    "code": "24G2918J",
+    "yieldValue": 1.91,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益1.91%",
+    "minAmount": 1,
+    "period": "最短持有180天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·天天鑫稳益固收类开放理财产品",
+    "code": "25G5735A",
+    "yieldValue": 1.81,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益1.81%",
+    "minAmount": 1,
+    "period": "每天开放",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "兴银稳添利周盈9号（工行）",
+    "code": null,
+    "yieldValue": 1.79,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益1.79%",
+    "minAmount": 1,
+    "period": "最短持有7天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "平安理财灵活成长（存单及存款）固收类7天持有",
+    "code": null,
+    "yieldValue": 1.78,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益1.78%",
+    "minAmount": 1,
+    "period": "最短持有7天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·天天鑫稳益固定收益类开放式理财产品",
+    "code": "25G6770J",
+    "yieldValue": 1.74,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益1.74%",
+    "minAmount": 1,
+    "period": "每天开放",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫添益最短持有21天固收开放理财产品",
+    "code": null,
+    "yieldValue": 1.69,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益1.69%",
+    "minAmount": null,
+    "period": "最短持有21天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·天天鑫稳益固收类开放理财产品",
+    "code": "25G5710A",
+    "yieldValue": 1.65,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益1.65%",
+    "minAmount": 1,
+    "period": "每天开放",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫添益最短持有30天宏观对冲策略固收增强",
+    "code": "26G2630A",
+    "yieldValue": 1.85,
+    "yieldType": "业绩比较基准",
+    "yieldRange": [
+      1.65,
+      1.85
+    ],
+    "yieldRaw": "业绩比较基准1.65%-1.85%",
+    "minAmount": 1,
+    "period": "最短持有30天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·天天鑫稳益固收类开放式理财产品",
+    "code": "24G5090A",
+    "yieldValue": 1.62,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益1.62%",
+    "minAmount": 1,
+    "period": "每天开放",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·天天鑫稳益固收类开放理财产品",
+    "code": "24G2770A",
+    "yieldValue": 1.56,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益1.56%",
+    "minAmount": 1,
+    "period": "每天开放",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·核心优选最短持有7天固收类开放理财产品",
+    "code": "24G5080A",
+    "yieldValue": 1.55,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益1.55%",
+    "minAmount": 1,
+    "period": "最短持有7天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "兴银稳添利日盈1号（工行）",
+    "code": null,
+    "yieldValue": 1.49,
+    "yieldType": "近六月年化收益",
+    "yieldRaw": "近六月年化收益1.49%",
+    "minAmount": 1,
+    "period": "每天开放",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·核心优选最短持有30天双债精选策略固收增强",
+    "code": "25G5736A",
+    "yieldValue": 1.27,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益1.27%",
+    "minAmount": 1,
+    "period": "最短持有30天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·如意人生天天鑫稳益固收开放个人理财产品",
+    "code": "26G2388G",
+    "yieldValue": null,
+    "yieldType": "业绩比较基准",
+    "yieldRaw": "业绩比较基准详见产品说明书",
+    "minAmount": 1,
+    "period": "无固定期限",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·添利宝私银尊享开放净值型理财产品",
+    "code": null,
+    "yieldValue": 1.2887,
+    "yieldType": "七日年化收益率",
+    "yieldRaw": "每万份收益（元）0.3463 | 七日年化收益率1.2887%",
+    "minAmount": null,
+    "period": "无固定期限",
+    "riskLevel": "PR1"
+  },
+  {
+    "name": "高盛工银理财·盛景私银尊享封闭固收美元产品256期",
+    "code": "26728B",
+    "yieldValue": 3.1,
+    "yieldType": "业绩比较基准",
+    "yieldRange": [
+      2.9,
+      3.1
+    ],
+    "yieldRaw": "业绩比较基准2.90%-3.10%",
+    "minAmount": 2000,
+    "period": "188天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "高盛工银理财·盛景私银尊享封闭固收美元产品258期",
+    "code": "26730B",
+    "yieldValue": 3,
+    "yieldType": "业绩比较基准",
+    "yieldRange": [
+      2.8,
+      3
+    ],
+    "yieldRaw": "业绩比较基准2.80%-3.00%",
+    "minAmount": 2000,
+    "period": "363天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫得利私银ESG优选目标止盈策略固收封闭",
+    "code": "26GS2681",
+    "yieldValue": 2.4,
+    "yieldType": "业绩比较基准",
+    "yieldRange": [
+      2.2,
+      2.4
+    ],
+    "yieldRaw": "业绩比较基准2.20%-2.40%",
+    "minAmount": null,
+    "period": "355天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫悦私银尊享目标止盈策略固收增强封闭",
+    "code": "26GS6623",
+    "yieldValue": 2.5,
+    "yieldType": "业绩比较基准",
+    "yieldRange": [
+      2.3,
+      2.5
+    ],
+    "yieldRaw": "业绩比较基准2.30%-2.50%",
+    "minAmount": null,
+    "period": "365天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "兴银稳利安盈封闭式2026年100期(私银)",
+    "code": null,
+    "yieldValue": 2.78,
+    "yieldType": "业绩比较基准",
+    "yieldRange": [
+      1.78,
+      2.78
+    ],
+    "yieldRaw": "业绩比较基准1.78%-2.78%",
+    "minAmount": null,
+    "period": "98天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "兴银稳利恒盈封闭式2026年226期(私银)",
+    "code": null,
+    "yieldValue": 3.5,
+    "yieldType": "业绩比较基准",
+    "yieldRange": [
+      2.5,
+      3.5
+    ],
+    "yieldRaw": "业绩比较基准2.50%-3.50%",
+    "minAmount": null,
+    "period": "715天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "兴银稳利恒盈封闭式2026年227期(私银)",
+    "code": null,
+    "yieldValue": 3.65,
+    "yieldType": "业绩比较基准",
+    "yieldRange": [
+      2.65,
+      3.65
+    ],
+    "yieldRaw": "业绩比较基准2.65%-3.65%",
+    "minAmount": null,
+    "period": "1077天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·添利宝私银尊享现金管理类开放产品9号",
+    "code": "24GS2889",
+    "yieldValue": 2.7896,
+    "yieldType": "七日年化收益率",
+    "yieldRaw": "每万份收益（元）0.5017 | 七日年化收益率2.7896%",
+    "minAmount": null,
+    "period": "无固定期限",
+    "riskLevel": "PR1"
+  },
+  {
+    "name": "工银理财·稳益私银尊享最短持有7天固收开放",
+    "code": "25GS2491",
+    "yieldValue": 2.64,
+    "yieldType": "近一月年化收益",
+    "yieldRaw": "近一月年化收益2.64%",
+    "minAmount": null,
+    "period": "最短持有7天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·天天鑫稳益私银尊享固收开放式产品",
+    "code": "25GS2737",
+    "yieldValue": 2.17,
+    "yieldType": "近六月年化收益",
+    "yieldRaw": "近六月年化收益2.17%",
+    "minAmount": null,
+    "period": "每天开放",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫悦私银尊享优先股策略优选最短持有180天混合产品",
+    "code": null,
+    "yieldValue": 2.28,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.28%",
+    "minAmount": null,
+    "period": "最短持有180天",
+    "riskLevel": "PR3"
+  },
+  {
+    "name": "工银理财·天天鑫私银尊享稳益固收开放产品",
+    "code": "25GS5720",
+    "yieldValue": 1.66,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益1.66%",
+    "minAmount": null,
+    "period": "每天开放",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·“全鑫权益”量化股债轮动策略指数挂钩型理财产品",
+    "code": null,
+    "yieldValue": 6.08,
+    "yieldType": "近一年年化收益",
+    "yieldRaw": "近一年年化收益6.08%",
+    "minAmount": 1,
+    "period": "每季度开放一次",
+    "riskLevel": "PR3"
+  },
+  {
+    "name": "工银理财·恒睿睿益150天持盈固定收益类开放式理财产品",
+    "code": null,
+    "yieldValue": 4.73,
+    "yieldType": "近一年年化收益",
+    "yieldRaw": "近一年年化收益4.73%",
+    "minAmount": 1,
+    "period": "最短持有150天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·恒睿日升月恒300天持盈固定收益类开放式理财产品",
+    "code": null,
+    "yieldValue": 4.36,
+    "yieldType": "近一年年化收益",
+    "yieldRaw": "近一年年化收益4.36%",
+    "minAmount": 1,
+    "period": "最短持有300天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·日升月恒固收类7天定开净值型理财产品",
+    "code": "20GS6120",
+    "yieldValue": 4.31,
+    "yieldType": "近一年年化收益",
+    "yieldRaw": "近一年年化收益4.31%",
+    "minAmount": null,
+    "period": "每周开放一次",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·智合多资产FOF90天持盈固定收益开放产品",
+    "code": "21GS5678",
+    "yieldValue": 4.18,
+    "yieldType": "近一年年化收益",
+    "yieldRaw": "近一年年化收益4.18%",
+    "minAmount": 1,
+    "period": "最短持有90天",
+    "riskLevel": "PR3"
+  },
+  {
+    "name": "工银理财·鑫添益纯债对冲策略最短持有90天固收开放",
+    "code": null,
+    "yieldValue": 4.07,
+    "yieldType": "近六月年化收益",
+    "yieldRaw": "近六月年化收益4.07%",
+    "minAmount": 1,
+    "period": "最短持有90天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫鼎利30天持盈固收增强开放式理财产品",
+    "code": null,
+    "yieldValue": 3.81,
+    "yieldType": "近一年年化收益",
+    "yieldRaw": "近一年年化收益3.81%",
+    "minAmount": null,
+    "period": "最短持有30天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·恒睿日升月恒60天持盈固定收益类开放式理财产品",
+    "code": null,
+    "yieldValue": 3.81,
+    "yieldType": "近一年年化收益",
+    "yieldRaw": "近一年年化收益3.81%",
+    "minAmount": 1,
+    "period": "最短持有60天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "中银理财-稳富增强（180天持有期）05",
+    "code": null,
+    "yieldValue": 3.72,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益3.72%",
+    "minAmount": 1,
+    "period": "最短持有180天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫添益最短持有30天ESG优选固收增强开放式理财产品",
+    "code": null,
+    "yieldValue": 3.53,
+    "yieldType": "近三月年化收益",
+    "yieldRaw": "近三月年化收益3.53%",
+    "minAmount": 1,
+    "period": "最短持有30天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫添益60天持盈固收增强开放式理财产品",
+    "code": null,
+    "yieldValue": 3.34,
+    "yieldType": "近三月年化收益",
+    "yieldRaw": "近三月年化收益3.34%",
+    "minAmount": 1,
+    "period": "最短持有60天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·智合多资产FOF120天持盈固定收益类开放式理财产品",
+    "code": null,
+    "yieldValue": 3.23,
+    "yieldType": "近一年年化收益",
+    "yieldRaw": "近一年年化收益3.23%",
+    "minAmount": 1,
+    "period": "最短持有120天",
+    "riskLevel": "PR3"
+  },
+  {
+    "name": "工银理财·日升月恒量化定期开放(7天）",
+    "code": null,
+    "yieldValue": 3.2,
+    "yieldType": "近一年年化收益",
+    "yieldRaw": "近一年年化收益3.20%",
+    "minAmount": null,
+    "period": "每周开放一次",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫添益90天持盈固收增强开放式理财产品",
+    "code": null,
+    "yieldValue": 3.19,
+    "yieldType": "近一年年化收益",
+    "yieldRaw": "近一年年化收益3.19%",
+    "minAmount": 1,
+    "period": "最短持有90天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·恒睿日升月恒360天持盈固收增强开放式理财产品",
+    "code": null,
+    "yieldValue": 3.16,
+    "yieldType": "近一年年化收益",
+    "yieldRaw": "近一年年化收益3.16%",
+    "minAmount": 1,
+    "period": "最短持有360天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·恒睿日升月恒120天持盈固收增强开放式理财产品",
+    "code": null,
+    "yieldValue": 3,
+    "yieldType": "近一年年化收益",
+    "yieldRaw": "近一年年化收益3.00%",
+    "minAmount": 1,
+    "period": "最短持有120天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·恒睿日升月恒30天持盈固收增强开放式理财产品",
+    "code": null,
+    "yieldValue": 2.96,
+    "yieldType": "近一年年化收益",
+    "yieldRaw": "近一年年化收益2.96%",
+    "minAmount": 1,
+    "period": "最短持有30天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·恒睿日升月恒60天持盈固收增强开放式理财产品",
+    "code": null,
+    "yieldValue": 2.87,
+    "yieldType": "近一年年化收益",
+    "yieldRaw": "近一年年化收益2.87%",
+    "minAmount": 1,
+    "period": "最短持有60天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·恒睿日升月恒180天持盈固收增强开放式理财产品",
+    "code": null,
+    "yieldValue": 2.85,
+    "yieldType": "近一年年化收益",
+    "yieldRaw": "近一年年化收益2.85%",
+    "minAmount": 1,
+    "period": "最短持有180天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫添益30天持盈固收增强开放式理财产品",
+    "code": null,
+    "yieldValue": 2.83,
+    "yieldType": "近一年年化收益",
+    "yieldRaw": "近一年年化收益2.83%",
+    "minAmount": 1,
+    "period": "最短持有30天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫尊利60天持盈固定收益类开放式理财产品",
+    "code": null,
+    "yieldValue": 2.8,
+    "yieldType": "近一年年化收益",
+    "yieldRaw": "近一年年化收益2.80%",
+    "minAmount": 1000,
+    "period": "最短持有60天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·恒睿日升月恒365天持盈固定收益类开放式理财产品",
+    "code": null,
+    "yieldValue": 2.74,
+    "yieldType": "近一年年化收益",
+    "yieldRaw": "近一年年化收益2.74%",
+    "minAmount": 1,
+    "period": "最短持有365天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·天天鑫添益短债债券型个人理财产品",
+    "code": null,
+    "yieldValue": 2.73,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.73%",
+    "minAmount": 1,
+    "period": "每天开放",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫悦股债精选最短持有90天固收增强开放式理财产品",
+    "code": null,
+    "yieldValue": 2.71,
+    "yieldType": "近三月年化收益",
+    "yieldRaw": "近三月年化收益2.71%",
+    "minAmount": 1,
+    "period": "最短持有90天",
+    "riskLevel": "PR3"
+  },
+  {
+    "name": "工银理财·颐合30天持盈固定收益类开放式理财产品",
+    "code": null,
+    "yieldValue": 2.71,
+    "yieldType": "近一年年化收益",
+    "yieldRaw": "近一年年化收益2.71%",
+    "minAmount": 1,
+    "period": "最短持有30天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·恒睿日升月恒30天持盈固定收益类开放式理财产品",
+    "code": null,
+    "yieldValue": 2.69,
+    "yieldType": "近一年年化收益",
+    "yieldRaw": "近一年年化收益2.69%",
+    "minAmount": 1,
+    "period": "最短持有30天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·核心优选150天持盈固收类开放式净值型理财产品",
+    "code": null,
+    "yieldValue": 2.66,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.66%",
+    "minAmount": 1,
+    "period": "最短持有150天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "兴银理财丰利悦动9个月持有日开1号（工行）",
+    "code": null,
+    "yieldValue": 2.64,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.64%",
+    "minAmount": 1,
+    "period": "最短持有270天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·智合多资产FOF180天持盈固收增强开放产品",
+    "code": "21GS5686",
+    "yieldValue": 2.62,
+    "yieldType": "近一年年化收益",
+    "yieldRaw": "近一年年化收益2.62%",
+    "minAmount": 1,
+    "period": "最短持有180天",
+    "riskLevel": "PR3"
+  },
+  {
+    "name": "工银理财·鑫添益365天持盈固收增强开放式理财产品",
+    "code": null,
+    "yieldValue": 2.58,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.58%",
+    "minAmount": 1,
+    "period": "最短持有365天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·核心优选120天持盈固定收益类开放式净值型理财产品",
+    "code": null,
+    "yieldValue": 2.57,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.57%",
+    "minAmount": 1,
+    "period": "最短持有120天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·智合多资产FOF90天持盈固收增强开放产品",
+    "code": "21GS5677",
+    "yieldValue": 2.54,
+    "yieldType": "近一年年化收益",
+    "yieldRaw": "近一年年化收益2.54%",
+    "minAmount": 1,
+    "period": "最短持有90天",
+    "riskLevel": "PR3"
+  },
+  {
+    "name": "工银理财·恒睿日升月恒90天持盈固收增强开放式理财产品",
+    "code": null,
+    "yieldValue": 2.53,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.53%",
+    "minAmount": 1,
+    "period": "最短持有90天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫添益最短持有180天低波红利策略固收增强开放产品",
+    "code": null,
+    "yieldValue": 2.49,
+    "yieldType": "近一年年化收益",
+    "yieldRaw": "近一年年化收益2.49%",
+    "minAmount": 1,
+    "period": "最短持有180天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫悦最短持有90天固收增强开放产品",
+    "code": "25G6699A",
+    "yieldValue": 2.48,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.48%",
+    "minAmount": 1,
+    "period": "最短持有90天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·核心优选最短持有90天固收增强开放产品(绿色科创主题)",
+    "code": null,
+    "yieldValue": 2.45,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.45%",
+    "minAmount": 1,
+    "period": "最短持有90天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫悦股债精选最短持有30天固收增强开放理财产品",
+    "code": null,
+    "yieldValue": 2.44,
+    "yieldType": "近一年年化收益",
+    "yieldRaw": "近一年年化收益2.44%",
+    "minAmount": 1,
+    "period": "最短持有30天",
+    "riskLevel": "PR3"
+  },
+  {
+    "name": "工银理财·智合多资产FOF30天持盈固收增强开放式理财产品",
+    "code": null,
+    "yieldValue": 2.44,
+    "yieldType": "近一年年化收益",
+    "yieldRaw": "近一年年化收益2.44%",
+    "minAmount": 1,
+    "period": "最短持有30天",
+    "riskLevel": "PR3"
+  },
+  {
+    "name": "工银理财·核心优选最短持有90天红利优选固收增强开放式理财产品",
+    "code": null,
+    "yieldValue": 2.43,
+    "yieldType": "近三月年化收益",
+    "yieldRaw": "近三月年化收益2.43%",
+    "minAmount": 1,
+    "period": "最短持有90天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫尊利固定收益类每周定期开放式理财产品3号",
+    "code": null,
+    "yieldValue": 2.43,
+    "yieldType": "近一年年化收益",
+    "yieldRaw": "近一年年化收益2.43%",
+    "minAmount": 1000,
+    "period": "每周开放一次",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫添益365天持盈固定收益类开放式理财产品",
+    "code": null,
+    "yieldValue": 2.42,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.42%",
+    "minAmount": 1,
+    "period": "最短持有365天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫鼎利90天持盈固收增强开放式理财产品",
+    "code": null,
+    "yieldValue": 2.4,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.40%",
+    "minAmount": null,
+    "period": "最短持有90天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·核心优选最短持有365天固收增强开放式产品",
+    "code": "23G5393E",
+    "yieldValue": 2.37,
+    "yieldType": "近一年年化收益",
+    "yieldRaw": "近一年年化收益2.37%",
+    "minAmount": 1,
+    "period": "最短持有365天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "信银理财慧盈象固收增强一年持有期12号",
+    "code": null,
+    "yieldValue": 2.36,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.36%",
+    "minAmount": 1,
+    "period": "最短持有363天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫尊利365天持盈固收增强开放式理财产品",
+    "code": null,
+    "yieldValue": 2.32,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.32%",
+    "minAmount": 1000,
+    "period": "最短持有365天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫尊利180天持盈固收增强开放式理财产品",
+    "code": null,
+    "yieldValue": 2.24,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.24%",
+    "minAmount": 1000,
+    "period": "最短持有180天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫悦红利优选最短持有120天固收增强开放式理财产品",
+    "code": null,
+    "yieldValue": 2.22,
+    "yieldType": "近六月年化收益",
+    "yieldRaw": "近六月年化收益2.22%",
+    "minAmount": 1,
+    "period": "最短持有120天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫悦最短持有180天固收增强开放理财产品",
+    "code": "25G6048A",
+    "yieldValue": 2.16,
+    "yieldType": "近六月年化收益",
+    "yieldRaw": "近六月年化收益2.16%",
+    "minAmount": 1,
+    "period": "最短持有180天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫添益7天持盈固收增强开放式理财产品",
+    "code": null,
+    "yieldValue": 2.14,
+    "yieldType": "近六月年化收益",
+    "yieldRaw": "近六月年化收益2.14%",
+    "minAmount": 1,
+    "period": "最短持有7天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫尊利90天持盈固收增强开放式理财产品",
+    "code": null,
+    "yieldValue": 2.12,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.12%",
+    "minAmount": 1000,
+    "period": "最短持有90天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫添益最短持有60天低波红利策略固收增强开放理财产品",
+    "code": null,
+    "yieldValue": 2.12,
+    "yieldType": "近三月年化收益",
+    "yieldRaw": "近三月年化收益2.12%",
+    "minAmount": 1,
+    "period": "最短持有60天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·核心优选最短持有30天红利优选固收增强开放式理财产品",
+    "code": null,
+    "yieldValue": 2.08,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.08%",
+    "minAmount": 1,
+    "period": "最短持有30天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫悦最短持有7天固收增强开放式理财产品",
+    "code": null,
+    "yieldValue": 2.08,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.08%",
+    "minAmount": 1,
+    "period": "最短持有7天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫悦股债精选最短持有365天固收增强开放式理财产品",
+    "code": null,
+    "yieldValue": 2.07,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.07%",
+    "minAmount": 1,
+    "period": "最短持有365天",
+    "riskLevel": "PR3"
+  },
+  {
+    "name": "工银理财·鑫悦最短持有30天固收增强开放式理财产品1号",
+    "code": null,
+    "yieldValue": 2.07,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.07%",
+    "minAmount": 1,
+    "period": "最短持有30天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫悦最短持有14天固收增强开放式理财产品1号",
+    "code": null,
+    "yieldValue": 2.07,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.07%",
+    "minAmount": 1,
+    "period": "最短持有14天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·核心优选最短持有270天固收类开放理财产品",
+    "code": "25G5039A",
+    "yieldValue": 1.98,
+    "yieldType": "近一年年化收益",
+    "yieldRaw": "近一年年化收益1.98%",
+    "minAmount": 1,
+    "period": "最短持有270天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫悦最短持有60天固收增强开放式理财产品1号",
+    "code": null,
+    "yieldValue": 1.97,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益1.97%",
+    "minAmount": 1,
+    "period": "最短持有60天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·天天鑫悦股债精选固收增强开放理财产品",
+    "code": null,
+    "yieldValue": 1.96,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益1.96%",
+    "minAmount": 1,
+    "period": "每天开放",
+    "riskLevel": "PR3"
+  },
+  {
+    "name": "工银理财·鑫悦最短持有90天固收增强开放理财产品",
+    "code": "25G6046A",
+    "yieldValue": 1.94,
+    "yieldType": "近一年年化收益",
+    "yieldRaw": "近一年年化收益1.94%",
+    "minAmount": 1,
+    "period": "最短持有90天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·核心优选ESG优选最短持有14天固收增强开放理财产品",
+    "code": null,
+    "yieldValue": 1.94,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益1.94%",
+    "minAmount": 1,
+    "period": "每天开放",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·核心优选最短持有270天固收开放理财产品",
+    "code": "25G5911I",
+    "yieldValue": 1.82,
+    "yieldType": "近六月年化收益",
+    "yieldRaw": "近六月年化收益1.82%",
+    "minAmount": 1,
+    "period": "最短持有270天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫悦ESG优选最短持有7天固收增强开放理财产品",
+    "code": null,
+    "yieldValue": 1.81,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益1.81%",
+    "minAmount": 1,
+    "period": "最短持有7天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫悦最短持有14天固收增强开放产品(绿色科创主题)",
+    "code": null,
+    "yieldValue": 1.76,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益1.76%",
+    "minAmount": 1,
+    "period": "最短持有14天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫稳利低波红利策略固收增强季开理财产品1号",
+    "code": null,
+    "yieldValue": 1.75,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益1.75%",
+    "minAmount": 1,
+    "period": "每季度开放一次",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·核心优选最短持有90天固定收益类开放式理财",
+    "code": "24G5976J",
+    "yieldValue": 1.73,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益1.73%",
+    "minAmount": 1,
+    "period": "最短持有90天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫添益最短持有365天低波红利策略固收增强开放产品",
+    "code": null,
+    "yieldValue": 1.69,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益1.69%",
+    "minAmount": 1,
+    "period": "最短持有365天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫添益最短持有120天固收类开放理财产品1号",
+    "code": "24G2912J",
+    "yieldValue": 1.67,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益1.67%",
+    "minAmount": 1,
+    "period": "最短持有120天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫悦最短持有360天固收增强开放理财产品",
+    "code": "25G6049A",
+    "yieldValue": 1.63,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益1.63%",
+    "minAmount": 1,
+    "period": "最短持有360天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·核心优选最短持有180天固定收益类开放式理财产品",
+    "code": null,
+    "yieldValue": 1.61,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益1.61%",
+    "minAmount": 1,
+    "period": "最短持有180天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫悦最短持有30天固收增强开放产品(绿色科创主题)",
+    "code": null,
+    "yieldValue": 1.59,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益1.59%",
+    "minAmount": 1,
+    "period": "最短持有30天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫悦最短持有30天固收增强开放产品",
+    "code": "25G6630A",
+    "yieldValue": 1.52,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益1.52%",
+    "minAmount": 1,
+    "period": "最短持有30天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·核心优选最短持有7天双债精选策略固收增强",
+    "code": "25G5709A",
+    "yieldValue": 1.46,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益1.46%",
+    "minAmount": 1,
+    "period": "最短持有7天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫添益最短持有7天宏观对冲策略固收增强开放理财产品",
+    "code": null,
+    "yieldValue": 1.38,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益1.38%",
+    "minAmount": 1,
+    "period": "最短持有7天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫悦最短持有60天固收增强开放产品",
+    "code": "25G6660A",
+    "yieldValue": 1.33,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益1.33%",
+    "minAmount": 1,
+    "period": "最短持有60天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·核心优选最短持有90天固收类开放式理财产品",
+    "code": "24G5976A",
+    "yieldValue": 1.3,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益1.30%",
+    "minAmount": 1,
+    "period": "最短持有90天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·智悦私银尊享最短持有180天固收开放产品",
+    "code": "25GS6728",
+    "yieldValue": 7.17,
+    "yieldType": "近三月年化收益",
+    "yieldRaw": "近三月年化收益7.17%",
+    "minAmount": null,
+    "period": "最短持有180天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·恒睿睿益私银尊享120天持盈固定收益类开放式理财产品",
+    "code": null,
+    "yieldValue": 4.56,
+    "yieldType": "近一年年化收益",
+    "yieldRaw": "近一年年化收益4.56%",
+    "minAmount": null,
+    "period": "最短持有120天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财鑫添益私银最短持有30天青山ESG优选固收增强",
+    "code": "25G2488B",
+    "yieldValue": 3.73,
+    "yieldType": "近三月年化收益",
+    "yieldRaw": "近三月年化收益3.73%",
+    "minAmount": null,
+    "period": "最短持有30天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫悦私银尊享最短持有7天固收增强开放产品",
+    "code": "24G6099B",
+    "yieldValue": 2.16,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.16%",
+    "minAmount": null,
+    "period": "最短持有7天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·如意人生鑫悦优先股策略优选混合(长辈专享26H6313G)",
+    "code": null,
+    "yieldValue": 2.15,
+    "yieldType": "业绩比较基准",
+    "yieldRange": [
+      1.95,
+      2.15
+    ],
+    "yieldRaw": "业绩比较基准1.95%-2.15%",
+    "minAmount": 1,
+    "period": "180天",
+    "riskLevel": "PR3"
+  },
+  {
+    "name": "工银理财·添利宝现金管理类开放净值型理财产品23号",
+    "code": "24G0008J",
+    "yieldValue": 1.6314,
+    "yieldType": "七日年化收益率",
+    "yieldRaw": "每万份收益（元）0.3783 | 七日年化收益率1.6314%",
+    "minAmount": 1,
+    "period": "无固定期限",
+    "riskLevel": "PR1"
+  },
+  {
+    "name": "工银理财·鑫添益纯债对冲策略最短持有7天固收开放",
+    "code": null,
+    "yieldValue": 4.09,
+    "yieldType": "近六月年化收益",
+    "yieldRaw": "近六月年化收益4.09%",
+    "minAmount": 1,
+    "period": "最短持有7天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·核心优选最短持有7天固收增强开放理财产品",
+    "code": "25G5776A",
+    "yieldValue": 4.08,
+    "yieldType": "近一月年化收益",
+    "yieldRaw": "近一月年化收益4.08%",
+    "minAmount": 1,
+    "period": "最短持有7天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·核心优选ESG优选最短持有60天固收开放产品",
+    "code": "26G5066A",
+    "yieldValue": 3.53,
+    "yieldType": "近一月年化收益",
+    "yieldRaw": "近一月年化收益3.53%",
+    "minAmount": 1,
+    "period": "最短持有60天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫添益ESG优选最短持有90天固收类开放产品",
+    "code": "25G2599A",
+    "yieldValue": 3.38,
+    "yieldType": "近一月年化收益",
+    "yieldRaw": "近一月年化收益3.38%",
+    "minAmount": 1,
+    "period": "最短持有90天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫添益ESG优选最短持有30天固收类开放产品",
+    "code": "26G2699A",
+    "yieldValue": 3.03,
+    "yieldType": "近一月年化收益",
+    "yieldRaw": "近一月年化收益3.03%",
+    "minAmount": 1,
+    "period": "最短持有30天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·核心优选最短持有30天固收增强开放理财产品",
+    "code": "25G5785A",
+    "yieldValue": 2.92,
+    "yieldType": "成立以来年化收益",
+    "yieldRaw": "成立以来年化收益2.92%",
+    "minAmount": 1,
+    "period": "最短持有30天",
+    "riskLevel": "PR2"
+  },
+  {
+    "name": "工银理财·鑫添益最短持有180天ESG优选固收增强开放",
+    "code": "26G2788A",
+    "yieldValue": 2.73,
+    "yieldType": "近一月年化收益",
+    "yieldRaw": "近一月年化收益2.73%",
+    "minAmount": 1,
+    "period": "最短持有180天",
+    "riskLevel": "PR2"
+  }
+]

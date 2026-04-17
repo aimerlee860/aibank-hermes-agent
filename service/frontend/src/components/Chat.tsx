@@ -25,23 +25,38 @@ export function Chat() {
     toolCalls,
     debugLogs,
     error,
+    isLoading,
     sendMessage,
     clearHistory
   } = useWebSocket(currentSessionId);
 
   // 加载会话列表
-  useEffect(() => {
+  const refreshSessions = useCallback(() => {
     fetch('/api/sessions?limit=20')
       .then(res => res.json())
       .then(data => setSessions(data.sessions || []))
       .catch(console.error);
   }, []);
 
+  useEffect(() => {
+    refreshSessions();
+  }, [refreshSessions]);
+
+  // 当收到 assistant 回复时刷新侧边栏（更新消息数）
+  const lastAssistantMsgCount = messages.filter(m => m.role === 'assistant').length;
+  useEffect(() => {
+    if (lastAssistantMsgCount > 0) {
+      refreshSessions();
+    }
+  }, [lastAssistantMsgCount, refreshSessions]);
+
   const handleNewSession = useCallback(() => {
     const newId = generateSessionId();
     setCurrentSessionId(newId);
     setSidebarOpen(false);
-  }, []);
+    // 延迟刷新侧边栏，等待后端保存上一个会话
+    setTimeout(refreshSessions, 500);
+  }, [refreshSessions]);
 
   const handleSelectSession = useCallback((id: string) => {
     setCurrentSessionId(id);
@@ -117,6 +132,7 @@ export function Chat() {
           currentResponse={currentResponse}
           toolCalls={toolCalls}
           debugLogs={debugLogs}
+          isLoading={isLoading}
         />
 
         {/* Input - 固定底部 */}

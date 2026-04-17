@@ -1,4 +1,5 @@
 import { clsx } from 'clsx';
+import { Loader2 } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import type { Message, ToolCall, DebugLogEntry } from '@/types/message';
@@ -8,17 +9,18 @@ interface MessageListProps {
   currentResponse: string;
   toolCalls: ToolCall[];
   debugLogs: DebugLogEntry[];
+  isLoading: boolean;
 }
 
-export function MessageList({ messages, currentResponse, toolCalls, debugLogs }: MessageListProps) {
+export function MessageList({ messages, currentResponse, toolCalls, debugLogs, isLoading }: MessageListProps) {
   return (
     <div className="flex-1 min-h-0 overflow-y-auto p-3 space-y-3">
       {messages.map((msg, idx) => (
         <MessageItem key={idx} message={msg} />
       ))}
 
-      {/* 当前响应区域：执行过程 + 流式响应 */}
-      {(debugLogs.length > 0 || toolCalls.length > 0 || currentResponse) && (
+      {/* 当前响应区域：统一一个头像 */}
+      {isLoading && (
         <div className="flex gap-2">
           <div className="w-6 h-6 rounded-full bg-[var(--hermes-amber)] flex items-center justify-center text-[var(--hermes-bg-dark)] text-xs font-bold shrink-0">
             ⚕
@@ -37,6 +39,38 @@ export function MessageList({ messages, currentResponse, toolCalls, debugLogs }:
             )}
 
             {/* 流式响应 */}
+            {currentResponse && (
+              <div className="bg-[var(--hermes-bg)] border border-[var(--hermes-border)] rounded-lg p-3">
+                <MarkdownContent content={currentResponse} />
+              </div>
+            )}
+
+            {/* 加载/处理中指示器 */}
+            <div className="flex items-center gap-2 text-xs text-[var(--hermes-dim)] pt-1">
+              <Loader2 size={12} className="animate-spin text-[var(--hermes-amber)]" />
+              <span>{currentResponse || debugLogs.length > 0 || toolCalls.length > 0 ? '正在处理...' : '正在思考...'}</span>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 无加载状态但仍有残留内容 */}
+      {!isLoading && (debugLogs.length > 0 || toolCalls.length > 0 || currentResponse) && (
+        <div className="flex gap-2">
+          <div className="w-6 h-6 rounded-full bg-[var(--hermes-amber)] flex items-center justify-center text-[var(--hermes-bg-dark)] text-xs font-bold shrink-0">
+            ⚕
+          </div>
+          <div className="flex-1 space-y-1">
+            {(debugLogs.length > 0 || toolCalls.length > 0) && (
+              <div className="bg-[var(--hermes-bg)] border border-[var(--hermes-border)] rounded-lg p-2 opacity-70">
+                {debugLogs.map((log, idx) => (
+                  <DebugLogDisplay key={`log-${idx}`} log={log} />
+                ))}
+                {toolCalls.map((tc, idx) => (
+                  <ToolCallDisplay key={`tool-${idx}`} toolCall={tc} />
+                ))}
+              </div>
+            )}
             {currentResponse && (
               <div className="bg-[var(--hermes-bg)] border border-[var(--hermes-border)] rounded-lg p-3">
                 <MarkdownContent content={currentResponse} />

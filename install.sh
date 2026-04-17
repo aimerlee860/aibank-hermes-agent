@@ -91,6 +91,22 @@ if [ -d "${SCRIPT_DIR}/skills" ]; then
     done
 fi
 
+# 复制 data 到 ~/.hermes/data（跳过已存在的）
+mkdir -p ~/.hermes/data
+if [ -d "${SCRIPT_DIR}/data" ]; then
+    for item in "${SCRIPT_DIR}/data"/*; do
+        [ -e "$item" ] || continue
+        item_name=$(basename "$item")
+        dest="${HOME}/.hermes/data/${item_name}"
+        if [ -e "$dest" ]; then
+            echo -e "  ${YELLOW}跳过${NC} data/${item_name} (已存在)"
+        else
+            cp -r "$item" "$dest"
+            echo -e "  ${GREEN}复制${NC} data/${item_name} -> ~/.hermes/data/"
+        fi
+    done
+fi
+
 echo -e "${GREEN}✓${NC} 自定义文件已就绪"
 
 # 步骤 3: 调用 hermes 的 setup-hermes.sh

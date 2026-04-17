@@ -1,0 +1,61 @@
+{
+  "updateTime": "2026-04-02",
+  "sections": [
+    {
+      "title": "账户贵金属",
+      "headers": ["品种", "银行买入价", "银行卖出价", "中间价", "当日涨跌值", "当日涨跌幅", "当年涨跌幅"],
+      "rows": [
+        { "name": "人民币账户黄金", "buyPrice": "1033.59", "sellPrice": "1034.09", "midPrice": "1033.84", "change": "-24.03", "changeRate": "-2.27%", "yearRate": "+6.09%" },
+        { "name": "人民币账户白银", "buyPrice": "15.897", "sellPrice": "15.917", "midPrice": "15.907", "change": "-0.826", "changeRate": "-4.94%", "yearRate": "-2.24%" },
+        { "name": "人民币账户铂金", "buyPrice": "423.26", "sellPrice": "426.38", "midPrice": "424.82", "change": "-14.84", "changeRate": "-3.38%", "yearRate": "-8.46%" },
+        { "name": "人民币账户钯金", "buyPrice": "318.40", "sellPrice": "328.57", "midPrice": "322.36", "change": "-10.65", "changeRate": "-3.20%", "yearRate": "-12.13%" },
+        { "name": "美元账户黄金", "buyPrice": "4667.79", "sellPrice": "4671.03", "midPrice": "4669.41", "change": "-117.44", "changeRate": "-2.45%", "yearRate": "+7.65%" },
+        { "name": "美元账户白银", "buyPrice": "71.7714", "sellPrice": "71.9214", "midPrice": "71.8464", "change": "-3.8683", "changeRate": "-5.11%", "yearRate": "-0.81%" },
+        { "name": "美元账户铂金", "buyPrice": "1911.14", "sellPrice": "1926.33", "midPrice": "1918.73", "change": "-70.73", "changeRate": "-3.56%", "yearRate": "-7.12%" },
+        { "name": "美元账户钯金", "buyPrice": "1434.10", "sellPrice": "1487.86", "midPrice": "1455.98", "change": "-50.88", "changeRate": "-3.38%", "yearRate": "-10.84%" }
+      ]
+    },
+    {
+      "title": "账户贵金属指数",
+      "headers": ["品种", "银行买入价", "银行卖出价", "中间价", "当日涨跌值", "当日涨跌幅", "当年涨跌幅"],
+      "rows": [
+        { "name": "人民币账户贵金属指数", "buyPrice": "369.13", "sellPrice": "369.69", "midPrice": "369.41", "change": "-11.85", "changeRate": "-3.11%", "yearRate": "+2.73%" },
+        { "name": "美元账户贵金属指数", "buyPrice": "357.70", "sellPrice": "358.16", "midPrice": "357.93", "change": "-12.17", "changeRate": "-3.29%", "yearRate": "+4.24%" }
+      ]
+    },
+    {
+      "title": "积存金",
+      "headers": ["金种", "实时主动积存价格", "最低价", "最高价", "定期积存价", "赎回价"],
+      "rows": [
+        { "name": "积存金", "price": "1036.81", "low": "1032.01", "high": "1055.45", "fixedPrice": "1052.40", "redeemPrice": "1036.81" },
+        { "name": "如意金积存", "price": "1056.13", "low": "---", "high": "---", "fixedPrice": "---", "redeemPrice": "1035.65" }
+      ]
+    },
+    {
+      "title": "递延贵金属",
+      "headers": ["品种", "当前价", "涨跌幅", "成交量(手)", "开盘价", "昨收价", "最高价", "最低价"],
+      "rows": [
+        { "name": "Ag(T+D)", "price": "17949.00", "changeRate": "-3.78%", "volume": "169682", "open": "18786.00", "prevClose": "18663.00", "high": "18916.00", "low": "17774.00" },
+        { "name": "Au(T+D)", "price": "1036.81", "changeRate": "-0.24%", "volume": "50768", "open": "1053.00", "prevClose": "1046.33", "high": "1060.91", "low": "1032.01" },
+        { "name": "Au(T+N1)", "price": "814.25", "changeRate": "0.00%", "volume": "0", "open": "0.00", "prevClose": "981.00", "high": "0.00", "low": "0.00" },
+        { "name": "Au(T+N2)", "price": "951.05", "changeRate": "0.00%", "volume": "0", "open": "0.00", "prevClose": "1025.00", "high": "0.00", "low": "0.00" },
+        { "name": "NYAuTN06", "price": "1040.30", "changeRate": "-0.25%", "volume": "470", "open": "1048.30", "prevClose": "1046.45", "high": "1059.20", "low": "1034.90" },
+        { "name": "NYAuTN12", "price": "1043.50", "changeRate": "-0.15%", "volume": "302", "open": "1052.40", "prevClose": "1048.00", "high": "1061.70", "low": "1036.15" },
+        { "name": "mAu(T+D)", "price": "1036.68", "changeRate": "-0.40%", "volume": "47060", "open": "1053.03", "prevClose": "1046.81", "high": "1061.79", "low": "1032.01" }
+      ]
+    },
+    {
+      "title": "贵金属现货",
+      "headers": ["品种", "当前价", "涨跌幅", "成交量(手)", "开盘价", "昨收价", "最高价", "最低价"],
+      "rows": [
+        { "name": "Au100g", "price": "1037.00", "changeRate": "-1.06%", "volume": "76", "open": "1048.00", "prevClose": "1048.16", "high": "1058.00", "low": "1035.00" },
+        { "name": "Au99.95", "price": "1035.00", "changeRate": "-0.91%", "volume": "4", "open": "1035.00", "prevClose": "1044.50", "high": "1035.00", "low": "1035.00" },
+        { "name": "Au99.99", "price": "1037.00", "changeRate": "-1.04%", "volume": "383176", "open": "1060.00", "prevClose": "1047.89", "high": "1095.00", "low": "1033.00" },
+        { "name": "PGC30g", "price": "1042.00", "changeRate": "+1.26%", "volume": "2", "open": "1042.00", "prevClose": "1029.00", "high": "1042.00", "low": "1042.00" },
+        { "name": "iAu100g", "price": "0.00", "changeRate": "0.00%", "volume": "0", "open": "0.00", "prevClose": "679.00", "high": "0.00", "low": "0.00" },
+        { "name": "iAu99.5", "price": "0.00", "changeRate": "0.00%", "volume": "0", "open": "0.00", "prevClose": "1044.00", "high": "0.00", "low": "0.00" },
+        { "name": "iAu99.99", "price": "1034.51", "changeRate": "-0.96%", "volume": "23918", "open": "1048.24", "prevClose": "1044.55", "high": "1053.85", "low": "1031.01" }
+      ]
+    }
+  ]
+}

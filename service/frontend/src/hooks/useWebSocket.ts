@@ -11,6 +11,7 @@ export function useWebSocket(sessionId: string) {
   const [toolCalls, setToolCalls] = useState<{ id: string; name: string; args: Record<string, unknown>; result?: string }[]>([]);
   const [debugLogs, setDebugLogs] = useState<DebugLogEntry[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const wsRef = useRef<WebSocket | null>(null);
   const reconnectTimeoutRef = useRef<number | null>(null);
@@ -116,6 +117,7 @@ export function useWebSocket(sessionId: string) {
         setStatus('');
         setDebugLogs([]);
         debugLogsRef.current = [];
+        // 保持 isLoading=true，直到收到实际内容
         break;
 
       case 'text_delta':
@@ -156,6 +158,7 @@ export function useWebSocket(sessionId: string) {
         break;
 
       case 'complete':
+        setIsLoading(false);
         if (event.response) {
           // 使用 ref 获取最新的工具调用和日志信息，保存到历史消息
           const currentToolCalls = toolCallsRef.current;
@@ -178,6 +181,7 @@ export function useWebSocket(sessionId: string) {
         break;
 
       case 'error':
+        setIsLoading(false);
         setError(event.message || 'Unknown error');
         break;
 
@@ -209,6 +213,13 @@ export function useWebSocket(sessionId: string) {
       timestamp: Date.now()
     }]);
 
+    setIsLoading(true);
+    setCurrentResponse('');
+    setToolCalls([]);
+    toolCallsRef.current = [];
+    setDebugLogs([]);
+    debugLogsRef.current = [];
+
     wsRef.current.send(JSON.stringify({
       type: 'message',
       content
@@ -233,6 +244,7 @@ export function useWebSocket(sessionId: string) {
     toolCalls,
     debugLogs,
     error,
+    isLoading,
     sendMessage,
     clearHistory
   };
