@@ -12,17 +12,36 @@ Mobile Bank Guard Plugin
 
 import json
 import logging
-from typing import Dict, Any, Optional
+from typing import Dict, Any, Optional, Callable
 
 logger = logging.getLogger(__name__)
 
-# 调试模式：打印详细日志到终端
-DEBUG_PRINT = True
+# WebSocket 日志发送器（全局，由 agent wrapper 设置）
+_ws_log_sender: Optional[Callable[[Dict], None]] = None
+_current_session_id: str = ""
 
-def _debug_print(msg: str):
-    """打印调试信息到终端"""
-    if DEBUG_PRINT:
-        print(f"\n🛡️ [mobile_bank_guard] {msg}")
+def set_ws_sender(sender: Optional[Callable[[Dict], None]], session_id: str = ""):
+    """设置 WebSocket 日志发送器（由 agent wrapper 在初始化时调用）"""
+    global _ws_log_sender, _current_session_id
+    _ws_log_sender = sender
+    _current_session_id = session_id
+
+def _send_log(msg: str):
+    """实时发送日志到 WebSocket 和终端"""
+    # 发送到 WebSocket（实时）
+    if _ws_log_sender:
+        try:
+            _ws_log_sender({
+                "type": "debug_log",
+                "message": msg,
+                "source": "guard",  # 标识来源为 guard
+                "session_id": _current_session_id
+            })
+        except Exception as e:
+            logger.debug(f"Failed to send log via WebSocket: {e}")
+
+    # 打印到终端（开发调试）
+    print(f"\n🛡️ [guard] {msg}")
 
 # 会话级别的账户信息缓存
 _session_accounts: Dict[str, list] = {}
@@ -100,7 +119,7 @@ def register(ctx):
     """插件注册入口"""
     ctx.register_hook("pre_tool_call", on_pre_tool_call)
     ctx.register_hook("post_tool_call", on_post_tool_call)
-    _debug_print("✅ 插件已注册，钩子: pre_tool_call, post_tool_call")
+    _send_log("✅ 插件已注册，钩子: pre_tool_call, post_tool_call")
     logger.info("[mobile_bank_guard] 插件已注册")
 
 
@@ -117,10 +136,10 @@ def on_pre_tool_call(
     对于需要账户信息的工具，检查参数是否有效。
     如果参数无效，阻断调用并提示先获取账户列表。
     """
-    _debug_print(f"📞 pre_tool_call 触发: tool={tool_name}, args={args}, session={session_id[:20] if session_id else 'N/A'}")
+    _send_log(f"📞 pre_tool_call 触发: tool={tool_name}, args={args}, session={session_id[:20] if session_id else 'N/A'}")
 
     if tool_name not in _TOOLS_REQUIRE_ACCOUNT_LIST:
-        _debug_print(f"   ➡️ 工具 {tool_name} 不在守护列表，放行")
+        _send_log(f"   ➡️ 工具 {tool_name} 不在守护列表，放行")
         return None
 
     args = args or {}
@@ -128,24 +147,24 @@ def on_pre_tool_call(
     param_name = config["param"]
     param_value = args.get(param_name, "")
 
-    _debug_print(f"   🔍 检查参数: {param_name}={param_value}")
+    _send_log(f"   🔍 检查参数: {param_name}={param_value}")
 
     # 检查参数是否有效
     if _is_valid_account_param(param_value):
-        _debug_print(f"   ✅ 参数 '{param_value}' 有效（已知账户/类型），放行")
+        _send_log(f"   ✅ 参数 '{param_value}' 有效（已知账户/类型），放行")
         return None  # 参数有效，允许调用
 
-    _debug_print(f"   ❌ 参数 '{param_value}' 无效")
+    _send_log(f"   ❌ 参数 '{param_value}' 无效")
 
     # 检查会话是否已获取过账户列表
     session_accounts = _get_session_accounts(session_id)
-    _debug_print(f"   📦 会话缓存: {len(session_accounts)} 个账户")
+    _send_log(f"   📦 会话缓存: {len(session_accounts)} 个账户")
 
     if session_accounts:
         # 已有账户列表，但参数不匹配已知账户
         # 提供更精确的提示
         available = [a.get("accountNo", "") for a in session_accounts if a.get("accountNo")]
-        _debug_print(f"   🚫 阻断！可用账户: {available}")
+        _send_log(f"   🚫 阻断！可用账户: {available}")
         return {
             "action": "block",
             "message": (
@@ -156,7 +175,7 @@ def on_pre_tool_call(
         }
 
     # 既无有效参数，也无账户列表缓存 → 阻断并提示
-    _debug_print(f"   🚫 阻断！无缓存，提示先调用 account_list")
+    _send_log(f"   🚫 阻断！无缓存，提示先调用 account_list")
     return {
         "action": "block",
         "message": config["hint"],
@@ -175,11 +194,11 @@ def on_post_tool_call(
     工具调用后处理
 
     1. 如果是 account_list 调用，缓存账户列表
-    2. 记录调用日志（可选）
+    2. 记录执行日志
     """
     args = args or {}
 
-    _debug_print(f"📞 post_tool_call 触发: tool={tool_name}")
+    _send_log(f"📞 post_tool_call: tool={tool_name} completed")
 
     # 缓存 account_list 结果
     if tool_name == "account_list":
@@ -188,11 +207,10 @@ def on_post_tool_call(
             if data.get("success") and data.get("accounts"):
                 _update_session_accounts(session_id, data["accounts"])
                 account_nos = [a.get("accountNo", "") for a in data["accounts"]]
-                _debug_print(f"   📦 已缓存账户列表: {account_nos}")
-                logger.debug(
-                    "[mobile_bank_guard] 缓存账户列表: %d 个账户",
-                    len(data["accounts"]),
-                )
+                _send_log(f"   📦 已缓存 {len(data['accounts'])} 个账户: {account_nos}")
         except Exception as e:
-            _debug_print(f"   ⚠️ 解析 account_list 结果失败: {e}")
-            logger.warning("[mobile_bank_guard] 解析 account_list 结果失败: %s", e)
+            _send_log(f"   ⚠️ 解析 account_list 结果失败: {e}")
+
+    # 显示执行结果摘要
+    result_preview = result[:100] if len(result) > 100 else result
+    _send_log(f"   📤 结果: {result_preview}...")

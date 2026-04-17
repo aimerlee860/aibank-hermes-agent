@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Hermes 风格配色 */
+:root {
+  --hermes-gold: #CD7F32;
+  --hermes-amber: #FFBF00;
+  --hermes-title: #FFD700;
+  --hermes-text: #FFF8DC;
+  --hermes-dim: #B8860B;
+  --hermes-bg: #1a1a2e;
+  --hermes-bg-dark: #0d0d1a;
+  --hermes-border: #333355;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-size: 14px;
+  font-family: 'Menlo', 'Monaco', 'Consolas', monospace;
+  overflow: hidden;
+}
+
+#root {
+  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* 消息气泡样式 - 更紧凑 */
+.message-bubble {
+  font-size: 13px;
+  line-height: 1.4;
+  padding: 8px 12px;
+}
+
+/* 工具调用样式 */
+.tool-call {
+  font-size: 12px;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--hermes-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--hermes-border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--hermes-dim);
+}
