@@ -80,15 +80,11 @@ def _merge_session_data(session_id: str, messages: List[Dict], service_db: Servi
     """
     合并 hermes_state 消息和 ServiceDB 日志/工具调用。
 
-    将连续的 assistant 消息合并为一条（只保留最后一条），
-    以匹配实时流式中只显示最终响应的行为。
+    按轮次号关联：每轮 chat() 调用对应一个 turn_seq，
+    从 ServiceDB 按轮次号查询日志和工具调用。
     """
-    # 从 ServiceDB 获取日志和工具调用
-    logs = service_db.get_logs(session_id)
-    tool_calls = service_db.get_tool_calls(session_id)
-
+    # 构建消息列表，合并连续 assistant 消息
     result = []
-
     for msg in messages:
         role = msg.get("role", "")
         content = msg.get("content", "")
@@ -96,7 +92,6 @@ def _merge_session_data(session_id: str, messages: List[Dict], service_db: Servi
             continue
 
         if role == "assistant":
-            # 连续的 assistant 消息只保留最后一条（最终响应）
             if result and result[-1].get("role") == "assistant":
                 result[-1]["content"] = content
                 result[-1]["timestamp"] = msg.get("timestamp")
@@ -113,11 +108,18 @@ def _merge_session_data(session_id: str, messages: List[Dict], service_db: Servi
                 "timestamp": msg.get("timestamp"),
             })
 
-    # 找到最后一条 assistant 消息，附加日志和工具调用
-    last_assistant = next((m for m in reversed(result) if m.get("role") == "assistant"), None)
-    if last_assistant and (logs or tool_calls):
+    # 按轮次号关联日志和工具调用
+    # 第 n 条 assistant 消息对应 turn_seq = n
+    assistant_idx = 0
+    for msg in result:
+        if msg.get("role") != "assistant":
+            continue
 
-        # 过滤掉 status 类型的日志（它们是实时中间状态，不应出现在历史中）
+        turn = assistant_idx
+        assistant_idx += 1
+
+        # 查询该轮的日志
+        logs = service_db.get_logs(session_id, turn_seq=turn)
         debug_logs = []
         for log in logs:
             if log.get("log_type") == "status":
@@ -127,9 +129,10 @@ def _merge_session_data(session_id: str, messages: List[Dict], service_db: Servi
                 "source": log.get("source", "agent"),
             })
         if debug_logs:
-            last_assistant["debug_logs"] = debug_logs
+            msg["debug_logs"] = debug_logs
 
-        # 转换工具调用格式
+        # 查询该轮的工具调用
+        tool_calls = service_db.get_tool_calls(session_id, turn_seq=turn)
         tc_list = []
         for tc in tool_calls:
             tc_list.append({
@@ -139,7 +142,7 @@ def _merge_session_data(session_id: str, messages: List[Dict], service_db: Servi
                 "result": tc.get("result"),
             })
         if tc_list:
-            last_assistant["tool_calls"] = tc_list
+            msg["tool_calls"] = tc_list
 
     return result
 

@@ -216,6 +216,7 @@ function MessageItem({ message }: { message: Message }) {
 
 function MarkdownContent({ content }: { content: string }) {
   return (
+    <div className="text-[var(--hermes-text)]">
     <ReactMarkdown
       remarkPlugins={[remarkGfm]}
       className="markdown-content"
@@ -289,5 +290,6 @@ function MarkdownContent({ content }: { content: string }) {
     >
       {content}
     </ReactMarkdown>
+    </div>
   );
 }

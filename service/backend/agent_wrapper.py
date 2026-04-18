@@ -46,6 +46,7 @@ class WebSocketAgentWrapper:
         self._initialized = False
         self._guard_handler = None
         self._service_db = ServiceDB()
+        self._turn_seq = -1
 
     def _load_hermes_config(self) -> Dict[str, Any]:
         """加载 Hermes 配置（复用 hermes 的配置系统）。"""
@@ -183,6 +184,7 @@ class WebSocketAgentWrapper:
             tool_call_id=tool_call_id,
             tool_name=tool_name,
             args=tool_args,
+            turn_seq=self._turn_seq,
         )
 
         # 发送日志（WebSocket）
@@ -231,6 +233,7 @@ class WebSocketAgentWrapper:
             content=message,
             source="agent",
             metadata={"category": category},
+            turn_seq=self._turn_seq,
         )
 
         # 只传递关键状态，忽略 lifecycle 等次要信息
@@ -250,6 +253,7 @@ class WebSocketAgentWrapper:
             log_type="debug",
             content=message,
             source=source,
+            turn_seq=self._turn_seq,
         )
 
         # 发送到 WebSocket
@@ -300,6 +304,7 @@ class WebSocketAgentWrapper:
                 log_type="debug",
                 content=event.get("message", ""),
                 source="guard",
+                turn_seq=self._turn_seq,
             )
         # 发送到 WebSocket
         self.ws_sender(event)
@@ -314,6 +319,7 @@ class WebSocketAgentWrapper:
         Returns:
             包含 final_response 和 messages 的字典
         """
+        self._turn_seq += 1
         self._init_agent()
 
         # 发送开始处理日志

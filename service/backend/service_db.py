@@ -43,6 +43,7 @@ CREATE INDEX IF NOT EXISTS idx_web_sessions_started ON web_sessions(started_at D
 CREATE TABLE IF NOT EXISTS execution_logs (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     session_id TEXT NOT NULL,
+    turn_seq INTEGER NOT NULL DEFAULT 0,
     timestamp REAL NOT NULL,
     log_type TEXT NOT NULL,      -- 'debug' | 'tool_start' | 'tool_complete' | 'status'
     source TEXT DEFAULT 'agent', -- 'agent' | 'guard'
@@ -57,6 +58,7 @@ CREATE INDEX IF NOT EXISTS idx_execution_logs_session ON execution_logs(session_
 CREATE TABLE IF NOT EXISTS tool_call_details (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     session_id TEXT NOT NULL,
+    turn_seq INTEGER NOT NULL DEFAULT 0,
     tool_call_id TEXT NOT NULL,
     tool_name TEXT NOT NULL,
     args TEXT,                   -- JSON: 工具参数
@@ -119,6 +121,15 @@ class ServiceDB:
     def _init_schema(self):
         """初始化数据库 Schema。"""
         self._conn.executescript(SCHEMA_SQL)
+        self._migrate_add_turn_seq()
+
+    def _migrate_add_turn_seq(self):
+        """为旧表添加 turn_seq 列（幂等）。"""
+        for table in ("execution_logs", "tool_call_details"):
+            try:
+                self._conn.execute(f"ALTER TABLE {table} ADD COLUMN turn_seq INTEGER NOT NULL DEFAULT 0")
+            except sqlite3.OperationalError:
+                pass  # 列已存在，忽略
 
     def _execute_write(self, fn):
         """执行写事务，带重试机制。"""
@@ -292,6 +303,7 @@ class ServiceDB:
         content: str,
         source: str = "agent",
         metadata: Dict[str, Any] = None,
+        turn_seq: int = 0,
     ) -> int:
         """
         添加执行日志。
@@ -302,6 +314,7 @@ class ServiceDB:
             content: 日志内容
             source: 来源 ('agent' | 'guard')
             metadata: 扩展元数据（JSON）
+            turn_seq: 轮次序号
 
         Returns:
             日志行 ID
@@ -312,34 +325,45 @@ class ServiceDB:
         def _do(conn):
             cursor = conn.execute(
                 """INSERT INTO execution_logs
-                   (session_id, timestamp, log_type, source, content, metadata)
-                   VALUES (?, ?, ?, ?, ?, ?)""",
-                (session_id, timestamp, log_type, source, content, metadata_json),
+                   (session_id, turn_seq, timestamp, log_type, source, content, metadata)
+                   VALUES (?, ?, ?, ?, ?, ?, ?)""",
+                (session_id, turn_seq, timestamp, log_type, source, content, metadata_json),
             )
             return cursor.lastrowid
 
         return self._execute_write(_do)
 
-    def get_logs(self, session_id: str, limit: int = 200) -> List[Dict[str, Any]]:
+    def get_logs(self, session_id: str, turn_seq: Optional[int] = None, limit: int = 200) -> List[Dict[str, Any]]:
         """
         获取会话的执行日志。
 
         Args:
             session_id: 会话 ID
+            turn_seq: 轮次序号（None 表示全部）
             limit: 最大返回数量
 
         Returns:
             日志列表，每项包含 {id, timestamp, log_type, source, content, metadata}
         """
         with self._lock:
-            cursor = self._conn.execute(
-                """SELECT id, timestamp, log_type, source, content, metadata
-                   FROM execution_logs
-                   WHERE session_id = ?
-                   ORDER BY timestamp
-                   LIMIT ?""",
-                (session_id, limit),
-            )
+            if turn_seq is not None:
+                cursor = self._conn.execute(
+                    """SELECT id, timestamp, log_type, source, content, metadata
+                       FROM execution_logs
+                       WHERE session_id = ? AND turn_seq = ?
+                       ORDER BY timestamp
+                       LIMIT ?""",
+                    (session_id, turn_seq, limit),
+                )
+            else:
+                cursor = self._conn.execute(
+                    """SELECT id, timestamp, log_type, source, content, metadata
+                       FROM execution_logs
+                       WHERE session_id = ?
+                       ORDER BY timestamp
+                       LIMIT ?""",
+                    (session_id, limit),
+                )
             rows = cursor.fetchall()
 
         result = []
@@ -372,6 +396,7 @@ class ServiceDB:
         tool_call_id: str,
         tool_name: str,
         args: Dict[str, Any] = None,
+        turn_seq: int = 0,
     ) -> int:
         """
         记录工具调用开始。
@@ -381,6 +406,7 @@ class ServiceDB:
             tool_call_id: 工具调用 ID
             tool_name: 工具名称
             args: 工具参数
+            turn_seq: 轮次序号
 
         Returns:
             行 ID
@@ -391,9 +417,9 @@ class ServiceDB:
         def _do(conn):
             cursor = conn.execute(
                 """INSERT INTO tool_call_details
-                   (session_id, tool_call_id, tool_name, args, started_at, status)
-                   VALUES (?, ?, ?, ?, ?, 'pending')""",
-                (session_id, tool_call_id, tool_name, args_json, started_at),
+                   (session_id, turn_seq, tool_call_id, tool_name, args, started_at, status)
+                   VALUES (?, ?, ?, ?, ?, ?, 'pending')""",
+                (session_id, turn_seq, tool_call_id, tool_name, args_json, started_at),
             )
             return cursor.lastrowid
 
@@ -424,21 +450,34 @@ class ServiceDB:
             )
         self._execute_write(_do)
 
-    def get_tool_calls(self, session_id: str) -> List[Dict[str, Any]]:
+    def get_tool_calls(self, session_id: str, turn_seq: Optional[int] = None) -> List[Dict[str, Any]]:
         """
         获取会话的工具调用详情。
+
+        Args:
+            session_id: 会话 ID
+            turn_seq: 轮次序号（None 表示全部）
 
         Returns:
             工具调用列表，每项包含 {id, tool_call_id, tool_name, args, result, status, started_at, completed_at}
         """
         with self._lock:
-            cursor = self._conn.execute(
-                """SELECT id, tool_call_id, tool_name, args, result, status, started_at, completed_at
-                   FROM tool_call_details
-                   WHERE session_id = ?
-                   ORDER BY started_at""",
-                (session_id,),
-            )
+            if turn_seq is not None:
+                cursor = self._conn.execute(
+                    """SELECT id, tool_call_id, tool_name, args, result, status, started_at, completed_at
+                       FROM tool_call_details
+                       WHERE session_id = ? AND turn_seq = ?
+                       ORDER BY started_at""",
+                    (session_id, turn_seq),
+                )
+            else:
+                cursor = self._conn.execute(
+                    """SELECT id, tool_call_id, tool_name, args, result, status, started_at, completed_at
+                       FROM tool_call_details
+                       WHERE session_id = ?
+                       ORDER BY started_at""",
+                    (session_id,),
+                )
             rows = cursor.fetchall()
 
         result = []
