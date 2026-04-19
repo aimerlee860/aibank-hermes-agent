@@ -35,7 +35,7 @@ export type TimelineEntry =
 // 调试日志条目（向后兼容）
 export interface DebugLogEntry {
   message: string;
-  source?: string;  // agent | guard
+  source?: string;  // agent | guard | guard:<plugin_name> | guard:<plugin_name>
 }
 
 // 消息类型

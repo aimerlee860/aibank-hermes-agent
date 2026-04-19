@@ -14,6 +14,48 @@ import logging
 from pathlib import Path
 from typing import Callable, Dict, Any, List, Optional
 
+
+class PluginLogBridge(logging.Handler):
+    """将 hermes_plugins 命名空间下所有插件的日志桥接到 WebSocket。
+
+    利用 Python logging 层级传播：子 logger（如 hermes_plugins.mobile_bank_guard）
+    的日志会自动传播到父 logger hermes_plugins，只需在父 logger 挂一个 handler
+    即可覆盖所有插件，无需为每个插件单独创建 handler。
+
+    前端通过 source 字段区分来源，格式为 "guard:<plugin_name>"。
+    """
+
+    def __init__(self, ws_sender: Callable[[Dict], None],
+                 service_db: 'ServiceDB', session_id: str,
+                 turn_seq_getter: Callable[[], int]):
+        super().__init__(level=logging.INFO)
+        self._ws_sender = ws_sender
+        self._service_db = service_db
+        self._session_id = session_id
+        self._turn_seq_getter = turn_seq_getter
+
+    def emit(self, record: logging.LogRecord):
+        try:
+            msg = self.format(record)
+            # hermes_plugins.mobile_bank_guard → guard:mobile_bank_guard
+            plugin_name = record.name.rsplit(".", 1)[-1] if "." in record.name else record.name
+            source = f"guard:{plugin_name}"
+            self._ws_sender({
+                "type": "debug_log",
+                "message": msg,
+                "source": source,
+                "session_id": self._session_id,
+            })
+            self._service_db.append_log(
+                session_id=self._session_id,
+                log_type="debug",
+                content=msg,
+                source=source,
+                turn_seq=self._turn_seq_getter(),
+            )
+        except Exception:
+            pass
+
 # 添加 hermes 到 Python 路径
 PROJECT_ROOT = Path(__file__).parent.parent.parent.resolve()
 HERMES_PATH = PROJECT_ROOT / "hermes"
@@ -44,7 +86,6 @@ class WebSocketAgentWrapper:
         self.messages: List[Dict[str, Any]] = []
         self._agent = None
         self._initialized = False
-        self._guard_handler = None
         self._service_db = ServiceDB()
         self._turn_seq = -1
 
@@ -108,8 +149,12 @@ class WebSocketAgentWrapper:
             from hermes_constants import OPENROUTER_BASE_URL
             from hermes_state import SessionDB
 
-            # 设置 guard 的 ws_sender（hermes 已加载 plugins）
-            self._setup_guard_ws_sender()
+            # 触发 hermes 标准插件发现加载（~/.hermes/plugins/）
+            from hermes_cli.plugins import discover_plugins
+            discover_plugins()
+
+            # 将 guard 插件的日志桥接到 WebSocket
+            self._attach_plugin_log_bridge()
 
             config = self._load_hermes_config()
             env = self._load_hermes_env()
@@ -264,50 +309,23 @@ class WebSocketAgentWrapper:
             "session_id": self.session_id
         })
 
-    def _setup_guard_ws_sender(self):
-        """设置 guard 的 WebSocket 日志发送器。"""
-        try:
-            # hermes 加载 plugins 到 hermes_plugins namespace
-            # 尝试从 hermes_plugins namespace 导入并设置 ws_sender
-            try:
-                from hermes_plugins.mobile_bank_guard import set_ws_sender
-                # 使用包装后的发送器，同时保存到 ServiceDB
-                set_ws_sender(self._guard_ws_sender_wrapper, self.session_id)
-                logger.info("Guard ws_sender set via hermes_plugins namespace")
-                return
-            except ImportError:
-                pass
+    def _attach_plugin_log_bridge(self):
+        """将 hermes_plugins 命名空间下所有插件的日志桥接到 WebSocket。
 
-            # 回退：动态导入 guards 目录的模块
-            import importlib.util
-            guard_path = PROJECT_ROOT / "guards" / "mobile_bank_guard" / "__init__.py"
-            if guard_path.exists():
-                spec = importlib.util.spec_from_file_location(
-                    "mobile_bank_guard", guard_path
-                )
-                guard_module = importlib.util.module_from_spec(spec)
-                spec.loader.exec_module(guard_module)
-                # 使用包装后的发送器，同时保存到 ServiceDB
-                guard_module.set_ws_sender(self._guard_ws_sender_wrapper, self.session_id)
-                # 同时注册到 hermes_plugins namespace
-                sys.modules["hermes_plugins.mobile_bank_guard"] = guard_module
-                logger.info("Guard ws_sender set via guards directory")
-        except Exception as e:
-            logger.warning(f"Failed to set guard ws_sender: {e}")
-
-    def _guard_ws_sender_wrapper(self, event: Dict):
-        """Guard 的 WebSocket 发送器包装，同时保存到 ServiceDB。"""
-        # 如果是 debug_log 类型，保存到 ServiceDB
-        if event.get("type") == "debug_log":
-            self._service_db.append_log(
-                session_id=self.session_id,
-                log_type="debug",
-                content=event.get("message", ""),
-                source="guard",
-                turn_seq=self._turn_seq,
-            )
-        # 发送到 WebSocket
-        self.ws_sender(event)
+        只需在父 logger 上挂一个 handler，子 logger 的日志会自动传播上来。
+        新增插件无需修改此方法。
+        """
+        parent_logger = logging.getLogger("hermes_plugins")
+        handler = PluginLogBridge(
+            ws_sender=self.ws_sender,
+            service_db=self._service_db,
+            session_id=self.session_id,
+            turn_seq_getter=lambda: self._turn_seq,
+        )
+        handler.setFormatter(logging.Formatter("%(message)s"))
+        parent_logger.addHandler(handler)
+        parent_logger.setLevel(logging.INFO)
+        self._plugin_log_handler = handler
 
     async def chat(self, message: str) -> Dict[str, Any]:
         """

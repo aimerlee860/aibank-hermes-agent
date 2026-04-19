@@ -80,7 +80,7 @@ export function MessageList({ messages, currentResponse, timeline, isLoading, sh
 /** 统一时间线条目渲染 */
 function TimelineEntryDisplay({ entry }: { entry: TimelineEntry }) {
   if (entry.type === 'log') {
-    const isGuard = entry.source === 'guard';
+    const isGuard = entry.source?.startsWith('guard');
     return (
       <div className={clsx(
         'text-xs font-mono whitespace-pre-wrap mb-1',
@@ -131,7 +131,7 @@ function LegacyTimeline({ logs, toolCalls }: { logs?: DebugLogEntry[]; toolCalls
   return (
     <>
       {logs?.map((log, idx) => {
-        const isGuard = log.source === 'guard';
+        const isGuard = log.source?.startsWith('guard');
         return (
           <div key={`log-${idx}`} className={clsx(
             'text-xs font-mono whitespace-pre-wrap mb-1',

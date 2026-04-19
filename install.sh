@@ -44,33 +44,18 @@ if [ -d "${SCRIPT_DIR}/tools" ]; then
     done
 fi
 
-# 复制 plugins 到 hermes/plugins（跳过已存在的）
+# 复制 plugins 到 ~/.hermes/plugins（hermes 标准插件目录）
+mkdir -p ~/.hermes/plugins
 if [ -d "${SCRIPT_DIR}/plugins" ]; then
     for item in "${SCRIPT_DIR}/plugins"/*; do
         [ -e "$item" ] || continue
         item_name=$(basename "$item")
-        dest="${HERMES_DIR}/plugins/${item_name}"
+        dest="${HOME}/.hermes/plugins/${item_name}"
         if [ -e "$dest" ]; then
             echo -e "  ${YELLOW}跳过${NC} plugins/${item_name} (已存在)"
         else
             cp -r "$item" "$dest"
-            echo -e "  ${GREEN}复制${NC} plugins/${item_name}"
-        fi
-    done
-fi
-
-# 复制 guards 到 ~/.hermes/plugins（跳过已存在的）
-mkdir -p ~/.hermes/plugins
-if [ -d "${SCRIPT_DIR}/guards" ]; then
-    for item in "${SCRIPT_DIR}/guards"/*; do
-        [ -e "$item" ] || continue
-        item_name=$(basename "$item")
-        dest="${HOME}/.hermes/plugins/${item_name}"
-        if [ -e "$dest" ]; then
-            echo -e "  ${YELLOW}跳过${NC} guards/${item_name} (已存在)"
-        else
-            cp -r "$item" "$dest"
-            echo -e "  ${GREEN}复制${NC} guards/${item_name} -> ~/.hermes/plugins/"
+            echo -e "  ${GREEN}复制${NC} plugins/${item_name} -> ~/.hermes/plugins/"
         fi
     done
 fi
