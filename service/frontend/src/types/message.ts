@@ -9,7 +9,8 @@ export type WSEventType =
   | 'complete'
   | 'error'
   | 'cleared'
-  | 'history';
+  | 'history'
+  | 'debug_log';
 
 // WebSocket 事件
 export interface WSEvent {
@@ -26,7 +27,12 @@ export interface WSEvent {
   source?: string;  // 日志来源：agent | guard
 }
 
-// 调试日志条目
+// 统一时间线条目：日志和工具调用按产生顺序交替排列
+export type TimelineEntry =
+  | { type: 'log'; message: string; source?: string }
+  | { type: 'tool'; id: string; name: string; args: Record<string, unknown>; result?: string };
+
+// 调试日志条目（向后兼容）
 export interface DebugLogEntry {
   message: string;
   source?: string;  // agent | guard
@@ -39,8 +45,9 @@ export interface Message {
   content: string;
   timestamp?: number;
   tool_name?: string;
-  tool_calls?: ToolCall[];
-  debug_logs?: DebugLogEntry[];  // 执行过程日志，带来源标识
+  timeline?: TimelineEntry[];     // 统一时间线（优先使用）
+  tool_calls?: ToolCall[];        // 旧字段，历史兼容
+  debug_logs?: DebugLogEntry[];   // 旧字段，历史兼容
 }
 
 // 工具调用

@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { clsx } from 'clsx';
 import { Menu, X, Plus, Trash2 } from 'lucide-react';
 import type { Session } from '@/types/message';

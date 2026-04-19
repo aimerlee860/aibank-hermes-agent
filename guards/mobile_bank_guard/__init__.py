@@ -136,11 +136,11 @@ def on_pre_tool_call(
     对于需要账户信息的工具，检查参数是否有效。
     如果参数无效，阻断调用并提示先获取账户列表。
     """
-    _send_log(f"📞 pre_tool_call 触发: tool={tool_name}, args={args}, session={session_id[:20] if session_id else 'N/A'}")
-
     if tool_name not in _TOOLS_REQUIRE_ACCOUNT_LIST:
-        _send_log(f"   ➡️ 工具 {tool_name} 不在守护列表，放行")
         return None
+
+    effective_session = session_id or _current_session_id
+    _send_log(f"📞 pre_tool_call 触发: tool={tool_name}, args={args}, session={effective_session[:20] if effective_session else 'N/A'}")
 
     args = args or {}
     config = _TOOLS_REQUIRE_ACCOUNT_LIST[tool_name]

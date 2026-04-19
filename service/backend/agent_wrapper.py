@@ -322,6 +322,13 @@ class WebSocketAgentWrapper:
         self._turn_seq += 1
         self._init_agent()
 
+        self._service_db.save_chat_message(
+            session_id=self.session_id,
+            turn_seq=self._turn_seq,
+            role="user",
+            content=message,
+        )
+
         # 发送开始处理日志
         self._send_debug_log(f"🚀 开始处理: {message[:50]}...")
 
@@ -339,13 +346,22 @@ class WebSocketAgentWrapper:
             # 更新消息历史
             self.messages = result.get("messages", [])
 
+            final_response = result.get("final_response", "")
+            if final_response:
+                self._service_db.save_chat_message(
+                    session_id=self.session_id,
+                    turn_seq=self._turn_seq,
+                    role="assistant",
+                    content=final_response,
+                )
+
             # 发送完成日志
             self._send_debug_log("🎉 处理完成")
 
             # 发送完成事件（包含响应）
             self.ws_sender({
                 "type": "complete",
-                "response": result.get("final_response", ""),
+                "response": final_response,
                 "session_id": self.session_id
             })
 

@@ -1,29 +1,35 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import { clsx } from 'clsx';
-import { AlertCircle, CheckCircle, Loader2 } from 'lucide-react';
+import { AlertCircle, CheckCircle, Loader2, Eye, EyeOff } from 'lucide-react';
 import { Sidebar } from './Sidebar';
 import { MessageList } from './MessageList';
 import { InputBox } from './InputBox';
 import { useWebSocket } from '@/hooks/useWebSocket';
 import type { Session } from '@/types/message';
 
-// 生成随机 session ID
 function generateSessionId(): string {
-  return `web-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
+  const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
+  const arr = crypto.getRandomValues(new Uint8Array(16));
+  return Array.from(arr, b => chars[b % chars.length]).join('');
 }
 
 export function Chat() {
   const [sessions, setSessions] = useState<Session[]>([]);
   const [currentSessionId, setCurrentSessionId] = useState(() => generateSessionId());
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [showLogs, setShowLogs] = useState(false);
+
+  const sessionLabel = useMemo(
+    () => sessions.find(s => s.id === currentSessionId)?.title || currentSessionId,
+    [sessions, currentSessionId]
+  );
 
   const {
     isConnected,
     messages,
     currentResponse,
     status,
-    toolCalls,
-    debugLogs,
+    timeline,
     error,
     isLoading,
     sendMessage,
@@ -89,13 +95,13 @@ export function Chat() {
       {/* Main chat area */}
       <main className="flex-1 flex flex-col min-w-0 h-full overflow-hidden">
         {/* Header */}
-        <header className="shrink-0 p-3 border-b border-[var(--hermes-border)] bg-[var(--hermes-bg-dark)] flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <h2 className="text-sm font-medium text-[var(--hermes-text)]">
-              {currentSessionId.slice(0, 8)}
+        <header className="shrink-0 px-3 py-2 border-b border-[var(--hermes-border)] bg-[var(--hermes-bg-dark)] flex items-center justify-between">
+          <div className="flex items-center gap-2 min-w-0">
+            <h2 className="text-sm font-medium text-[var(--hermes-text)] truncate max-w-[200px]" title={sessionLabel}>
+              {sessionLabel}
             </h2>
             <div className={clsx(
-              'flex items-center gap-1 text-xs',
+              'flex items-center gap-1 text-xs shrink-0',
               isConnected ? 'text-green-400' : 'text-red-400'
             )}>
               {isConnected ? (
@@ -107,12 +113,25 @@ export function Chat() {
             </div>
           </div>
 
-          <button
-            onClick={clearHistory}
-            className="text-xs text-[var(--hermes-dim)] hover:text-[var(--hermes-text)] transition-colors"
-          >
-            清空
-          </button>
+          <div className="flex items-center gap-3 shrink-0">
+            <button
+              onClick={() => setShowLogs(!showLogs)}
+              className={clsx(
+                'flex items-center gap-1 text-xs transition-colors',
+                showLogs ? 'text-[var(--hermes-amber)]' : 'text-[var(--hermes-dim)] hover:text-[var(--hermes-text)]'
+              )}
+              title={showLogs ? '隐藏日志' : '显示日志'}
+            >
+              {showLogs ? <Eye size={14} /> : <EyeOff size={14} />}
+              日志
+            </button>
+            <button
+              onClick={clearHistory}
+              className="text-xs text-[var(--hermes-dim)] hover:text-[var(--hermes-text)] transition-colors"
+            >
+              清空
+            </button>
+          </div>
         </header>
 
         {/* Status bar */}
@@ -130,9 +149,9 @@ export function Chat() {
         <MessageList
           messages={messages}
           currentResponse={currentResponse}
-          toolCalls={toolCalls}
-          debugLogs={debugLogs}
+          timeline={timeline}
           isLoading={isLoading}
+          showLogs={showLogs}
         />
 
         {/* Input - 固定底部 */}

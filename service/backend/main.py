@@ -76,73 +76,71 @@ async def startup_event():
         logger.error(f"Startup check failed: {e}")
 
 
-def _merge_session_data(session_id: str, messages: List[Dict], service_db: ServiceDB) -> List[Dict]:
+def _build_history_with_timeline(session_id: str, service_db: ServiceDB) -> List[Dict]:
     """
-    合并 hermes_state 消息和 ServiceDB 日志/工具调用。
+    从 ServiceDB 构建 history 消息列表（含 timeline）。
 
-    按轮次号关联：每轮 chat() 调用对应一个 turn_seq，
-    从 ServiceDB 按轮次号查询日志和工具调用。
+    批量查询日志和工具调用，按 turn_seq 关联到对应 assistant 消息。
     """
-    # 构建消息列表，合并连续 assistant 消息
+    messages = service_db.get_chat_messages(session_id)
+    if not messages:
+        return []
+
+    # 批量查询所有日志和工具调用（2 次查询代替 2N 次）
+    all_logs = service_db.get_logs(session_id)
+    all_tool_calls = service_db.get_tool_calls(session_id)
+
+    # 按 turn_seq 分组
+    logs_by_turn: Dict[int, list] = {}
+    for log in all_logs:
+        turn = log.get("turn_seq", 0)
+        logs_by_turn.setdefault(turn, []).append(log)
+
+    tools_by_turn: Dict[int, list] = {}
+    for tc in all_tool_calls:
+        turn = tc.get("turn_seq", 0)
+        tools_by_turn.setdefault(turn, []).append(tc)
+
     result = []
     for msg in messages:
-        role = msg.get("role", "")
-        content = msg.get("content", "")
-        if role not in ("user", "assistant") or not content:
-            continue
+        entry = {
+            "role": msg["role"],
+            "content": msg["content"],
+            "timestamp": msg["timestamp"],
+        }
 
-        if role == "assistant":
-            if result and result[-1].get("role") == "assistant":
-                result[-1]["content"] = content
-                result[-1]["timestamp"] = msg.get("timestamp")
-            else:
-                result.append({
-                    "role": "assistant",
-                    "content": content,
-                    "timestamp": msg.get("timestamp"),
+        if msg["role"] == "assistant":
+            turn = msg["turn_seq"]
+            timeline = []
+
+            for log in logs_by_turn.get(turn, []):
+                if log.get("log_type") == "status":
+                    continue
+                timeline.append({
+                    "type": "log",
+                    "message": log.get("content", ""),
+                    "source": log.get("source", "agent"),
+                    "_ts": log.get("timestamp", 0),
                 })
-        else:
-            result.append({
-                "role": "user",
-                "content": content,
-                "timestamp": msg.get("timestamp"),
-            })
 
-    # 按轮次号关联日志和工具调用
-    # 第 n 条 assistant 消息对应 turn_seq = n
-    assistant_idx = 0
-    for msg in result:
-        if msg.get("role") != "assistant":
-            continue
+            for tc in tools_by_turn.get(turn, []):
+                timeline.append({
+                    "type": "tool",
+                    "id": tc.get("tool_call_id", ""),
+                    "name": tc.get("tool_name", ""),
+                    "args": tc.get("args", {}),
+                    "result": tc.get("result"),
+                    "_ts": tc.get("started_at", 0),
+                })
 
-        turn = assistant_idx
-        assistant_idx += 1
+            timeline.sort(key=lambda x: x["_ts"])
+            for t in timeline:
+                t.pop("_ts", None)
 
-        # 查询该轮的日志
-        logs = service_db.get_logs(session_id, turn_seq=turn)
-        debug_logs = []
-        for log in logs:
-            if log.get("log_type") == "status":
-                continue
-            debug_logs.append({
-                "message": log.get("content", ""),
-                "source": log.get("source", "agent"),
-            })
-        if debug_logs:
-            msg["debug_logs"] = debug_logs
+            if timeline:
+                entry["timeline"] = timeline
 
-        # 查询该轮的工具调用
-        tool_calls = service_db.get_tool_calls(session_id, turn_seq=turn)
-        tc_list = []
-        for tc in tool_calls:
-            tc_list.append({
-                "id": tc.get("tool_call_id", ""),
-                "name": tc.get("tool_name", ""),
-                "args": tc.get("args", {}),
-                "result": tc.get("result"),
-            })
-        if tc_list:
-            msg["tool_calls"] = tc_list
+        result.append(entry)
 
     return result
 
@@ -183,19 +181,10 @@ async def websocket_chat(websocket: WebSocket, session_id: str):
     wrapper = WebSocketAgentWrapper(ws_sender=realtime_sender, session_id=session_id)
     active_sessions[session_id] = wrapper
 
-    # 从数据库加载历史消息（合并 hermes_state 和 ServiceDB）
+    # 从 ServiceDB 加载历史消息
     try:
-        from hermes_state import SessionDB
-        hermes_db = SessionDB()
-
-        history_messages = hermes_db.get_messages(session_id)
-        if history_messages:
-            # 合并数据
-            formatted_messages = _merge_session_data(
-                session_id,
-                history_messages[-100:],  # 只取最近 100 条
-                service_db
-            )
+        formatted_messages = _build_history_with_timeline(session_id, service_db)
+        if formatted_messages:
             await websocket.send_json({
                 "type": "history",
                 "messages": formatted_messages,
@@ -349,17 +338,12 @@ async def delete_session(session_id: str):
 @app.get("/api/sessions/{session_id}/messages")
 async def get_session_messages(session_id: str, limit: int = 100):
     """
-    获取会话消息历史（合并 ServiceDB 数据）。
+    获取会话消息历史（从 ServiceDB）。
     """
     try:
-        from hermes_state import SessionDB
-        hermes_db = SessionDB()
         service_db = ServiceDB()
-
-        messages = hermes_db.get_messages(session_id, limit=limit)
-        # 合并 ServiceDB 数据
-        merged_messages = _merge_session_data(session_id, messages, service_db)
-        return {"messages": merged_messages}
+        messages = _build_history_with_timeline(session_id, service_db)
+        return {"messages": messages}
 
     except Exception as e:
         logger.error(f"Failed to get messages: {e}")

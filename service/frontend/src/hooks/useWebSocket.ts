@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import type { WSEvent, Message, DebugLogEntry } from '@/types/message';
+import type { WSEvent, Message, TimelineEntry } from '@/types/message';
 
 const WS_URL = 'ws://127.0.0.1:18080';
 
@@ -8,8 +8,7 @@ export function useWebSocket(sessionId: string) {
   const [messages, setMessages] = useState<Message[]>([]);
   const [currentResponse, setCurrentResponse] = useState('');
   const [status, setStatus] = useState('');
-  const [toolCalls, setToolCalls] = useState<{ id: string; name: string; args: Record<string, unknown>; result?: string }[]>([]);
-  const [debugLogs, setDebugLogs] = useState<DebugLogEntry[]>([]);
+  const [timeline, setTimeline] = useState<TimelineEntry[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -17,8 +16,7 @@ export function useWebSocket(sessionId: string) {
   const reconnectTimeoutRef = useRef<number | null>(null);
   const sessionIdRef = useRef<string>(sessionId);
   const isConnectingRef = useRef(false);
-  const toolCallsRef = useRef<{ id: string; name: string; args: Record<string, unknown>; result?: string }[]>([]);
-  const debugLogsRef = useRef<DebugLogEntry[]>([]);
+  const timelineRef = useRef<TimelineEntry[]>([]);
 
   // sessionId 变化时重连
   useEffect(() => {
@@ -43,10 +41,8 @@ export function useWebSocket(sessionId: string) {
     setIsConnected(false);
     setMessages([]);
     setCurrentResponse('');
-    setToolCalls([]);
-    toolCallsRef.current = [];
-    setDebugLogs([]);
-    debugLogsRef.current = [];
+    setTimeline([]);
+    timelineRef.current = [];
     setStatus('');
     setError(null);
     isConnectingRef.current = false;
@@ -104,6 +100,20 @@ export function useWebSocket(sessionId: string) {
     };
   }, [sessionId]);
 
+  const appendTimeline = (entry: TimelineEntry) => {
+    const next = [...timelineRef.current, entry];
+    timelineRef.current = next;
+    setTimeline(next);
+  };
+
+  const updateTimelineTool = (toolCallId: string, result: string) => {
+    const next = timelineRef.current.map(e =>
+      e.type === 'tool' && e.id === toolCallId ? { ...e, result } : e
+    );
+    timelineRef.current = next;
+    setTimeline(next);
+  };
+
   const handleEvent = (event: WSEvent) => {
     switch (event.type) {
       case 'connected':
@@ -112,11 +122,9 @@ export function useWebSocket(sessionId: string) {
 
       case 'start':
         setCurrentResponse('');
-        setToolCalls([]);
-        toolCallsRef.current = [];
+        setTimeline([]);
+        timelineRef.current = [];
         setStatus('');
-        setDebugLogs([]);
-        debugLogsRef.current = [];
         // 保持 isLoading=true，直到收到实际内容
         break;
 
@@ -125,22 +133,16 @@ export function useWebSocket(sessionId: string) {
         break;
 
       case 'tool_start':
-        const newToolCall = {
+        appendTimeline({
+          type: 'tool',
           id: event.tool_call_id || event.name || '',
           name: event.name || '',
-          args: event.args || {}
-        };
-        setToolCalls(prev => [...prev, newToolCall]);
-        toolCallsRef.current = [...toolCallsRef.current, newToolCall];
+          args: event.args || {},
+        });
         break;
 
       case 'tool_complete':
-        setToolCalls(prev => prev.map(tc =>
-          tc.id === event.tool_call_id ? { ...tc, result: event.result } : tc
-        ));
-        toolCallsRef.current = toolCallsRef.current.map(tc =>
-          tc.id === event.tool_call_id ? { ...tc, result: event.result } : tc
-        );
+        updateTimelineTool(event.tool_call_id || '', event.result || '');
         break;
 
       case 'status':
@@ -148,35 +150,29 @@ export function useWebSocket(sessionId: string) {
         break;
 
       case 'debug_log':
-        // 添加调试日志（带来源标识）
-        const newLog: DebugLogEntry = {
+        appendTimeline({
+          type: 'log',
           message: event.message || '',
-          source: event.source || 'agent'
-        };
-        setDebugLogs(prev => [...prev, newLog]);
-        debugLogsRef.current = [...debugLogsRef.current, newLog];
+          source: event.source || 'agent',
+        });
         break;
 
       case 'complete':
         setIsLoading(false);
         if (event.response) {
-          // 使用 ref 获取最新的工具调用和日志信息，保存到历史消息
-          const currentToolCalls = toolCallsRef.current;
-          const currentDebugLogs = debugLogsRef.current;
+          // 使用 ref 获取最新的时间线，保存到历史消息
+          const currentTimeline = timelineRef.current;
           setMessages(prev => [...prev, {
-            role: 'assistant',
-            content: event.response,
+            role: 'assistant' as const,
+            content: event.response || '',
             timestamp: Date.now(),
-            tool_calls: currentToolCalls.length > 0 ? currentToolCalls : undefined,
-            debug_logs: currentDebugLogs.length > 0 ? currentDebugLogs : undefined
+            timeline: currentTimeline.length > 0 ? currentTimeline : undefined,
           }]);
         }
         // 清空中间状态（已保存到消息中）
         setCurrentResponse('');
-        setToolCalls([]);
-        toolCallsRef.current = [];
-        setDebugLogs([]);
-        debugLogsRef.current = [];
+        setTimeline([]);
+        timelineRef.current = [];
         setStatus('');
         break;
 
@@ -193,10 +189,8 @@ export function useWebSocket(sessionId: string) {
 
       case 'cleared':
         setMessages([]);
-        setToolCalls([]);
-        toolCallsRef.current = [];
-        setDebugLogs([]);
-        debugLogsRef.current = [];
+        setTimeline([]);
+        timelineRef.current = [];
         break;
     }
   };
@@ -215,10 +209,8 @@ export function useWebSocket(sessionId: string) {
 
     setIsLoading(true);
     setCurrentResponse('');
-    setToolCalls([]);
-    toolCallsRef.current = [];
-    setDebugLogs([]);
-    debugLogsRef.current = [];
+    setTimeline([]);
+    timelineRef.current = [];
 
     wsRef.current.send(JSON.stringify({
       type: 'message',
@@ -230,10 +222,8 @@ export function useWebSocket(sessionId: string) {
     if (!wsRef.current || wsRef.current.readyState !== WebSocket.OPEN) return;
     wsRef.current.send(JSON.stringify({ type: 'clear' }));
     setMessages([]);
-    setToolCalls([]);
-    toolCallsRef.current = [];
-    setDebugLogs([]);
-    debugLogsRef.current = [];
+    setTimeline([]);
+    timelineRef.current = [];
   };
 
   return {
@@ -241,8 +231,7 @@ export function useWebSocket(sessionId: string) {
     messages,
     currentResponse,
     status,
-    toolCalls,
-    debugLogs,
+    timeline,
     error,
     isLoading,
     sendMessage,

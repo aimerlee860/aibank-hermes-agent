@@ -2,21 +2,21 @@ import { clsx } from 'clsx';
 import { Loader2 } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import type { Message, ToolCall, DebugLogEntry } from '@/types/message';
+import type { Message, TimelineEntry, DebugLogEntry, ToolCall } from '@/types/message';
 
 interface MessageListProps {
   messages: Message[];
   currentResponse: string;
-  toolCalls: ToolCall[];
-  debugLogs: DebugLogEntry[];
+  timeline: TimelineEntry[];
   isLoading: boolean;
+  showLogs: boolean;
 }
 
-export function MessageList({ messages, currentResponse, toolCalls, debugLogs, isLoading }: MessageListProps) {
+export function MessageList({ messages, currentResponse, timeline, isLoading, showLogs }: MessageListProps) {
   return (
     <div className="flex-1 min-h-0 overflow-y-auto p-3 space-y-3">
       {messages.map((msg, idx) => (
-        <MessageItem key={idx} message={msg} />
+        <MessageItem key={idx} message={msg} showLogs={showLogs} />
       ))}
 
       {/* 当前响应区域：统一一个头像 */}
@@ -26,14 +26,11 @@ export function MessageList({ messages, currentResponse, toolCalls, debugLogs, i
             ⚕
           </div>
           <div className="flex-1 space-y-1">
-            {/* 执行过程 */}
-            {(debugLogs.length > 0 || toolCalls.length > 0) && (
+            {/* 统一时间线：日志和工具调用按顺序交替 */}
+            {showLogs && timeline.length > 0 && (
               <div className="bg-[var(--hermes-bg)] border border-[var(--hermes-border)] rounded-lg p-2 opacity-70">
-                {debugLogs.map((log, idx) => (
-                  <DebugLogDisplay key={`log-${idx}`} log={log} />
-                ))}
-                {toolCalls.map((tc, idx) => (
-                  <ToolCallDisplay key={`tool-${idx}`} toolCall={tc} />
+                {timeline.map((entry, idx) => (
+                  <TimelineEntryDisplay key={idx} entry={entry} />
                 ))}
               </div>
             )}
@@ -48,26 +45,23 @@ export function MessageList({ messages, currentResponse, toolCalls, debugLogs, i
             {/* 加载/处理中指示器 */}
             <div className="flex items-center gap-2 text-xs text-[var(--hermes-dim)] pt-1">
               <Loader2 size={12} className="animate-spin text-[var(--hermes-amber)]" />
-              <span>{currentResponse || debugLogs.length > 0 || toolCalls.length > 0 ? '正在处理...' : '正在思考...'}</span>
+              <span>{currentResponse || timeline.length > 0 ? '正在处理...' : '正在思考...'}</span>
             </div>
           </div>
         </div>
       )}
 
       {/* 无加载状态但仍有残留内容 */}
-      {!isLoading && (debugLogs.length > 0 || toolCalls.length > 0 || currentResponse) && (
+      {!isLoading && (showLogs && timeline.length > 0 || currentResponse) && (
         <div className="flex gap-2">
           <div className="w-6 h-6 rounded-full bg-[var(--hermes-amber)] flex items-center justify-center text-[var(--hermes-bg-dark)] text-xs font-bold shrink-0">
             ⚕
           </div>
           <div className="flex-1 space-y-1">
-            {(debugLogs.length > 0 || toolCalls.length > 0) && (
+            {showLogs && timeline.length > 0 && (
               <div className="bg-[var(--hermes-bg)] border border-[var(--hermes-border)] rounded-lg p-2 opacity-70">
-                {debugLogs.map((log, idx) => (
-                  <DebugLogDisplay key={`log-${idx}`} log={log} />
-                ))}
-                {toolCalls.map((tc, idx) => (
-                  <ToolCallDisplay key={`tool-${idx}`} toolCall={tc} />
+                {timeline.map((entry, idx) => (
+                  <TimelineEntryDisplay key={idx} entry={entry} />
                 ))}
               </div>
             )}
@@ -83,35 +77,37 @@ export function MessageList({ messages, currentResponse, toolCalls, debugLogs, i
   );
 }
 
-function DebugLogDisplay({ log }: { log: DebugLogEntry }) {
-  const isGuard = log.source === 'guard';
-  return (
-    <div className={clsx(
-      'text-xs font-mono whitespace-pre-wrap mb-1',
-      isGuard ? 'text-purple-400' : 'text-[var(--hermes-dim)]'
-    )}>
-      {isGuard && <span className="mr-1">🛡️</span>}
-      {log.message}
-    </div>
-  );
-}
+/** 统一时间线条目渲染 */
+function TimelineEntryDisplay({ entry }: { entry: TimelineEntry }) {
+  if (entry.type === 'log') {
+    const isGuard = entry.source === 'guard';
+    return (
+      <div className={clsx(
+        'text-xs font-mono whitespace-pre-wrap mb-1',
+        isGuard ? 'text-purple-400' : 'text-[var(--hermes-dim)]'
+      )}>
+        {isGuard && <span className="mr-1">🛡️</span>}
+        {entry.message}
+      </div>
+    );
+  }
 
-function ToolCallDisplay({ toolCall }: { toolCall: ToolCall }) {
+  // tool
   return (
     <div className="text-xs font-mono mb-1">
       <div className="flex items-center gap-1.5">
         <span>🔧</span>
-        <span className="text-[var(--hermes-amber)] font-semibold">{toolCall.name}</span>
-        {toolCall.result ? (
+        <span className="text-[var(--hermes-amber)] font-semibold">{entry.name}</span>
+        {entry.result ? (
           <span className="text-green-400">✓</span>
         ) : (
           <span className="animate-pulse">⏳</span>
         )}
       </div>
-      {/* 参数 - 不截断 */}
-      {toolCall.args && Object.keys(toolCall.args).length > 0 && (
+      {/* 参数 */}
+      {entry.args && Object.keys(entry.args).length > 0 && (
         <div className="ml-4 mt-0.5 text-[var(--hermes-dim)]">
-          {Object.entries(toolCall.args).map(([key, value]) => (
+          {Object.entries(entry.args).map(([key, value]) => (
             <div key={key}>
               <span className="text-[var(--hermes-text)]">{key}</span>
               <span className="text-[var(--hermes-dim)]">: </span>
@@ -120,13 +116,36 @@ function ToolCallDisplay({ toolCall }: { toolCall: ToolCall }) {
           ))}
         </div>
       )}
-      {/* 结果 - 不截断 */}
-      {toolCall.result && (
+      {/* 结果 */}
+      {entry.result && (
         <div className="ml-4 mt-0.5 text-green-400 whitespace-pre-wrap">
-          → {toolCall.result}
+          → {entry.result}
         </div>
       )}
     </div>
+  );
+}
+
+/** 兼容旧的历史消息（debug_logs + tool_calls 分开存储） */
+function LegacyTimeline({ logs, toolCalls }: { logs?: DebugLogEntry[]; toolCalls?: ToolCall[] }) {
+  return (
+    <>
+      {logs?.map((log, idx) => {
+        const isGuard = log.source === 'guard';
+        return (
+          <div key={`log-${idx}`} className={clsx(
+            'text-xs font-mono whitespace-pre-wrap mb-1',
+            isGuard ? 'text-purple-400' : 'text-[var(--hermes-dim)]'
+          )}>
+            {isGuard && <span className="mr-1">🛡️</span>}
+            {log.message}
+          </div>
+        );
+      })}
+      {toolCalls?.map((tc, idx) => (
+        <TimelineEntryDisplay key={`tool-${idx}`} entry={{ type: 'tool', ...tc }} />
+      ))}
+    </>
   );
 }
 
@@ -149,9 +168,14 @@ function formatValue(value: unknown): string {
   return String(value);
 }
 
-function MessageItem({ message }: { message: Message }) {
+function MessageItem({ message, showLogs }: { message: Message; showLogs: boolean }) {
   const isUser = message.role === 'user';
   const isTool = message.role === 'tool';
+
+  // 统一时间线内容：优先使用 timeline，否则回退到旧的 debug_logs + tool_calls
+  const hasTimeline = (message.timeline?.length ?? 0) > 0;
+  const hasLegacy = (message.debug_logs?.length ?? 0) > 0 || (message.tool_calls?.length ?? 0) > 0;
+  const showProcess = showLogs && (hasTimeline || hasLegacy);
 
   return (
     <div className={clsx('flex gap-2', isUser && 'justify-end')}>
@@ -167,21 +191,16 @@ function MessageItem({ message }: { message: Message }) {
       <div className={clsx(
         'max-w-[80%] space-y-1',
       )}>
-        {/* 执行过程日志 */}
-        {message.debug_logs && message.debug_logs.length > 0 && (
+        {/* 执行过程：统一时间线 */}
+        {showProcess && (
           <div className="bg-[var(--hermes-bg)] border border-[var(--hermes-border)] rounded-lg p-2 opacity-70">
-            {message.debug_logs.map((log, idx) => (
-              <DebugLogDisplay key={idx} log={log} />
-            ))}
-          </div>
-        )}
-
-        {/* 工具调用信息 */}
-        {message.tool_calls && message.tool_calls.length > 0 && (
-          <div className="bg-[var(--hermes-bg)] border border-[var(--hermes-border)] rounded-lg p-2 opacity-70">
-            {message.tool_calls.map((tc, idx) => (
-              <ToolCallDisplay key={idx} toolCall={tc} />
-            ))}
+            {hasTimeline ? (
+              message.timeline!.map((entry, idx) => (
+                <TimelineEntryDisplay key={idx} entry={entry} />
+              ))
+            ) : (
+              <LegacyTimeline logs={message.debug_logs} toolCalls={message.tool_calls} />
+            )}
           </div>
         )}
 
@@ -264,7 +283,7 @@ function MarkdownContent({ content }: { content: string }) {
             </code>
           ) : (
             <code className="font-mono" {...props}>{children}</code>
-          );
+          )
         },
         // 引用块
         blockquote: ({ children }) => (

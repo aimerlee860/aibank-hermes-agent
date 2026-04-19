@@ -79,6 +79,18 @@ CREATE TABLE IF NOT EXISTS service_config (
     updated_at REAL DEFAULT (strftime('%s', 'now'))
 );
 
+-- 原始对话消息表：保存 user/assistant 消息
+CREATE TABLE IF NOT EXISTS chat_messages (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    session_id TEXT NOT NULL,
+    turn_seq INTEGER NOT NULL DEFAULT 0,
+    role TEXT NOT NULL,       -- 'user' | 'assistant'
+    content TEXT NOT NULL,
+    timestamp REAL NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_chat_messages_session ON chat_messages(session_id, timestamp);
+
 -- 用户会话偏好表：每个 session 的 UI 状态
 CREATE TABLE IF NOT EXISTS session_preferences (
     session_id TEXT PRIMARY KEY,
@@ -287,9 +299,58 @@ class ServiceDB:
         """
         def _do(conn):
             conn.execute("DELETE FROM web_sessions WHERE id = ?", (session_id,))
+            conn.execute("DELETE FROM chat_messages WHERE session_id = ?", (session_id,))
             conn.execute("DELETE FROM execution_logs WHERE session_id = ?", (session_id,))
             conn.execute("DELETE FROM tool_call_details WHERE session_id = ?", (session_id,))
             conn.execute("DELETE FROM session_preferences WHERE session_id = ?", (session_id,))
+        self._execute_write(_do)
+
+    # -------------------------------------------------------------------------
+    # 原始对话消息
+    # -------------------------------------------------------------------------
+
+    def save_chat_message(
+        self,
+        session_id: str,
+        turn_seq: int,
+        role: str,
+        content: str,
+    ) -> int:
+        """保存一条原始对话消息（user 或 assistant）。"""
+        timestamp = time.time()
+
+        def _do(conn):
+            cursor = conn.execute(
+                """INSERT INTO chat_messages
+                   (session_id, turn_seq, role, content, timestamp)
+                   VALUES (?, ?, ?, ?, ?)""",
+                (session_id, turn_seq, role, content, timestamp),
+            )
+            return cursor.lastrowid
+
+        return self._execute_write(_do)
+
+    def get_chat_messages(self, session_id: str, limit: int = 200) -> List[Dict[str, Any]]:
+        """获取会话的原始对话消息（按时间排序）。"""
+        with self._lock:
+            cursor = self._conn.execute(
+                """SELECT id, turn_seq, role, content, timestamp
+                   FROM chat_messages
+                   WHERE session_id = ?
+                   ORDER BY timestamp
+                   LIMIT ?""",
+                (session_id, limit),
+            )
+            rows = cursor.fetchall()
+        return [dict(row) for row in rows]
+
+    def clear_chat_messages(self, session_id: str):
+        """清空会话的原始对话消息。"""
+        def _do(conn):
+            conn.execute(
+                "DELETE FROM chat_messages WHERE session_id = ?",
+                (session_id,),
+            )
         self._execute_write(_do)
 
     # -------------------------------------------------------------------------
@@ -348,7 +409,7 @@ class ServiceDB:
         with self._lock:
             if turn_seq is not None:
                 cursor = self._conn.execute(
-                    """SELECT id, timestamp, log_type, source, content, metadata
+                    """SELECT id, turn_seq, timestamp, log_type, source, content, metadata
                        FROM execution_logs
                        WHERE session_id = ? AND turn_seq = ?
                        ORDER BY timestamp
@@ -357,7 +418,7 @@ class ServiceDB:
                 )
             else:
                 cursor = self._conn.execute(
-                    """SELECT id, timestamp, log_type, source, content, metadata
+                    """SELECT id, turn_seq, timestamp, log_type, source, content, metadata
                        FROM execution_logs
                        WHERE session_id = ?
                        ORDER BY timestamp
@@ -464,7 +525,7 @@ class ServiceDB:
         with self._lock:
             if turn_seq is not None:
                 cursor = self._conn.execute(
-                    """SELECT id, tool_call_id, tool_name, args, result, status, started_at, completed_at
+                    """SELECT id, turn_seq, tool_call_id, tool_name, args, result, status, started_at, completed_at
                        FROM tool_call_details
                        WHERE session_id = ? AND turn_seq = ?
                        ORDER BY started_at""",
@@ -472,7 +533,7 @@ class ServiceDB:
                 )
             else:
                 cursor = self._conn.execute(
-                    """SELECT id, tool_call_id, tool_name, args, result, status, started_at, completed_at
+                    """SELECT id, turn_seq, tool_call_id, tool_name, args, result, status, started_at, completed_at
                        FROM tool_call_details
                        WHERE session_id = ?
                        ORDER BY started_at""",
@@ -563,6 +624,7 @@ class ServiceDB:
 
     def clear_session(self, session_id: str):
         """清空会话的日志和工具调用（保留会话记录）。"""
+        self.clear_chat_messages(session_id)
         self.clear_logs(session_id)
         self.clear_tool_calls(session_id)
 
